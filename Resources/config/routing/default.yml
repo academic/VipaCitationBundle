@@ -1,0 +1,3 @@
+okul_bilisim_bootstrap_default_index:
+    path:     /{journalId}/hello/{name}
+    defaults: { _controller: "AdvancedCitationBundle:Default:index" }

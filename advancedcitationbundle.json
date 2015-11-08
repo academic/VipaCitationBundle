@@ -1,0 +1,16 @@
+{
+  "name": "advanced-citation-bundle",
+  "description": "OJS Advanced Citation Bundle",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@bitbucket.org:okulbilisim/advancedcitationbundle.git"
+    }
+  ],
+  "require": {
+    "okulbilisim/ojs-bootstrap-bundle": "dev-master"
+  },
+  "extra": {
+    "bundle-class": "OkulBilisim\\AdvancedCitationBundle\\AdvancedCitationBundle"
+  }
+}

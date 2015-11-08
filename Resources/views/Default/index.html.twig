@@ -1,0 +1,16 @@
+{% extends '::ojsbase.html.twig' %}
+{% block title %}{{ 'Bootstrap Title' }} {{ parent() }}{% endblock %}
+
+{% block breadcrumb %}
+    {% set list = [
+    {'link': path('ojs_journal_dashboard_index', {journalId: selectedJournal().id}), 'title': 'dashboard'|trans},
+    {'title': 'Bootstrap Title'}
+    ] %}
+    {{ breadcrumb(list) }}
+{% endblock %}
+
+{% block body -%}
+    <h1>Hello {{ name }}</h1>
+    <p>Lorem ipsum dolor sit amet</p>
+
+{% endblock %}

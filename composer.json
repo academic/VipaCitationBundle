@@ -1,0 +1,27 @@
+{
+  "name" : "okulbilisim/advanced-citation-bundle",
+  "description" : "OJS Advanced Citation Bundle",
+  "type" : "symfony-bundle",
+  "keywords" : [
+    "advanced citation bundle"
+  ],
+  "license" : [
+    "MIT"
+  ],
+  "require" : {
+    "php": ">=5.4.0",
+    "symfony/symfony": "~2.7",
+    "twig/extensions": "1.2.*"
+  },
+  "autoload" : {
+    "psr-4" : {
+      "OkulBilisim\\AdvancedCitationBundle\\" : ""
+    }
+  },
+  "extra" : {
+  "branch-alias" :
+    {
+      "dev-master" : "0.0.1-dev"
+    }
+  }
+}

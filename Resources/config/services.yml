@@ -1,0 +1,10 @@
+services:
+  bootstrap.routing_loader:
+    class: OkulBilisim\AdvancedCitationBundle\Routing\AdvancedLoader
+    tags:
+      - { name: routing.loader }
+  bootstrap.left_menu_listener:
+    class: OkulBilisim\AdvancedCitationBundle\EventListener\LeftMenuListener
+    arguments: [@ojs.journal_service]
+    tags:
+      - { name: kernel.event_subscriber }
