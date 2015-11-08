@@ -11,7 +11,8 @@
   "require" : {
     "php": ">=5.4.0",
     "symfony/symfony": "~2.7",
-    "twig/extensions": "1.2.*"
+    "twig/extensions": "1.2.*",
+    "guzzlehttp/guzzle": "^6.1"
   },
   "autoload" : {
     "psr-4" : {
