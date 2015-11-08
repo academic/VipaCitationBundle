@@ -1,10 +1,9 @@
 services:
-  bootstrap.routing_loader:
+  advanced_citation.routing_loader:
     class: OkulBilisim\AdvancedCitationBundle\Routing\AdvancedLoader
     tags:
       - { name: routing.loader }
-  bootstrap.left_menu_listener:
-    class: OkulBilisim\AdvancedCitationBundle\EventListener\LeftMenuListener
-    arguments: [@ojs.journal_service]
-    tags:
-      - { name: kernel.event_subscriber }
+  advanced_citation.citation_subscriber:
+      class: OkulBilisim\AdvancedCitationBundle\EventListener\CitationEventSubscriber
+      tags:
+          - { name: doctrine.event_subscriber, connection: default }
