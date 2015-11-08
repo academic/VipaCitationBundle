@@ -8,7 +8,7 @@
     }
   ],
   "require": {
-    "okulbilisim/ojs-bootstrap-bundle": "dev-master"
+    "okulbilisim/ojs": "dev-master"
   },
   "extra": {
     "bundle-class": "OkulBilisim\\AdvancedCitationBundle\\AdvancedCitationBundle"
