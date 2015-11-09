@@ -1,55 +1,57 @@
-{% if advancedCitation.author is not empty %}
-<tr>
-    <td>{{ 'title.authors'|trans }}</td>
-    <td>{{ advancedCitation.author }}</td>
-</tr>
-{% endif %}
+{% if advancedCitation is not null %}
+    {% if advancedCitation.author is not empty %}
+    <tr>
+        <td>{{ 'title.authors'|trans }}</td>
+        <td>{{ advancedCitation.author }}</td>
+    </tr>
+    {% endif %}
 
-{% if advancedCitation.title is not empty %}
-<tr>
-    <td>{{ 'title'|trans }}</td>
-    <td>{{ advancedCitation.title }}</td>
-</tr>
-{% endif %}
+    {% if advancedCitation.title is not empty %}
+    <tr>
+        <td>{{ 'title'|trans }}</td>
+        <td>{{ advancedCitation.title }}</td>
+    </tr>
+    {% endif %}
 
-{% if advancedCitation.editor is not empty %}
-<tr>
-    <td>{{ 'journal.editor'|trans }}</td>
-    <td>{{ advancedCitation.editor }}</td>
-</tr>
-{% endif %}
+    {% if advancedCitation.editor is not empty %}
+    <tr>
+        <td>{{ 'journal.editor'|trans }}</td>
+        <td>{{ advancedCitation.editor }}</td>
+    </tr>
+    {% endif %}
 
-{% if advancedCitation.pages is not empty %}
-<tr>
-    <td>{{ 'page.plural'|trans }}</td>
-    <td>{{ advancedCitation.pages }}</td>
-</tr>
-{% endif %}
+    {% if advancedCitation.pages is not empty %}
+    <tr>
+        <td>{{ 'page.plural'|trans }}</td>
+        <td>{{ advancedCitation.pages }}</td>
+    </tr>
+    {% endif %}
 
-{% if advancedCitation.publisher is not empty %}
-<tr>
-    <td>{{ 'publisher'|trans }}</td>
-    <td>{{ advancedCitation.publisher }}</td>
-</tr>
-{% endif %}
+    {% if advancedCitation.publisher is not empty %}
+    <tr>
+        <td>{{ 'publisher'|trans }}</td>
+        <td>{{ advancedCitation.publisher }}</td>
+    </tr>
+    {% endif %}
 
-{% if advancedCitation.location is not empty %}
-<tr>
-    <td>{{ 'location'|trans }}</td>
-    <td>{{ advancedCitation.location }}</td>
-</tr>
-{% endif %}
+    {% if advancedCitation.location is not empty %}
+    <tr>
+        <td>{{ 'location'|trans }}</td>
+        <td>{{ advancedCitation.location }}</td>
+    </tr>
+    {% endif %}
 
-{% if advancedCitation.type is not empty %}
-<tr>
-    <td>{{ 'type'|trans }}</td>
-    <td>{{ advancedCitation.type }}</td>
-</tr>
-{% endif %}
+    {% if advancedCitation.type is not empty %}
+    <tr>
+        <td>{{ 'type'|trans }}</td>
+        <td>{{ advancedCitation.type }}</td>
+    </tr>
+    {% endif %}
 
-{% if advancedCitation.language is not empty %}
-<tr>
-    <td>{{ 'title.languages'|trans }}</td>
-    <td>{{ advancedCitation.language }}</td>
-</tr>
+    {% if advancedCitation.language is not empty %}
+    <tr>
+        <td>{{ 'title.languages'|trans }}</td>
+        <td>{{ advancedCitation.language }}</td>
+    </tr>
+    {% endif %}
 {% endif %}
