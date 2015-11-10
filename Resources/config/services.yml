@@ -3,11 +3,11 @@ services:
     class: OkulBilisim\AdvancedCitationBundle\Routing\AdvancedLoader
     tags:
       - { name: routing.loader }
-  advanced_citation.citation_subscriber:
-      class: OkulBilisim\AdvancedCitationBundle\EventListener\CitationEventSubscriber
+  advanced_citation.citation_orm_subscriber:
+      class: OkulBilisim\AdvancedCitationBundle\EventListener\CitationOrmEventSubscriber
       tags:
           - { name: doctrine.event_subscriber, connection: default }
-  advanced_citation.twig_subscrriber:
+  advanced_citation.twig_subscriber:
       class: OkulBilisim\AdvancedCitationBundle\EventListener\TwigEventSubscriber
       arguments: [@doctrine.orm.entity_manager, @twig]
       tags:

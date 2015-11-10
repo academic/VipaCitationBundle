@@ -9,7 +9,7 @@ use GuzzleHttp\Client;
 use Ojs\JournalBundle\Entity\Citation;
 use OkulBilisim\AdvancedCitationBundle\Entity\AdvancedCitation;
 
-class CitationEventSubscriber implements EventSubscriber
+class CitationOrmEventSubscriber implements EventSubscriber
 {
     public function getSubscribedEvents()
     {
