@@ -7,6 +7,11 @@ services:
       class: OkulBilisim\AdvancedCitationBundle\EventListener\CitationOrmEventSubscriber
       tags:
           - { name: doctrine.event_subscriber, connection: default }
+  advanced_citation.citation_subscriber:
+      class: OkulBilisim\AdvancedCitationBundle\EventListener\CitationEventSubscriber
+      arguments: [@router]
+      tags:
+          - { name: kernel.event_subscriber }
   advanced_citation.twig_subscriber:
       class: OkulBilisim\AdvancedCitationBundle\EventListener\TwigEventSubscriber
       arguments: [@doctrine.orm.entity_manager, @twig]

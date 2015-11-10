@@ -1,3 +1,8 @@
-okul_bilisim_bootstrap_default:
-  prefix:   /journal
-  resource: "@AdvancedCitationBundle/Resources/config/routing/default.yml"
+okulbilisim_advancedcitation_edit:
+    path:     /{journalId}/article/{articleId}/advanced-citation/{id}/edit
+    defaults: { _controller: "AdvancedCitationBundle:AdvancedCitation:edit" }
+
+okulbilisim_advancedcitation_update:
+    path:     /{journalId}/article/{articleId}/advanced-citation/{id}/update
+    defaults: { _controller: "AdvancedCitationBundle:AdvancedCitation:update" }
+    methods:  [PUT]
