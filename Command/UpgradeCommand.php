@@ -45,6 +45,8 @@ class UpgradeCommand extends ContainerAwareCommand
         $entityManager = $this->getContainer()->get('doctrine.orm.entity_manager');
         $citations = $entityManager->getRepository('OjsJournalBundle:Citation')->findAll();
 
+        $index = 0;
+
         foreach ($citations as $citation) {
             $advancedCitation = $entityManager
                 ->getRepository('AdvancedCitationBundle:AdvancedCitation')
@@ -54,9 +56,16 @@ class UpgradeCommand extends ContainerAwareCommand
                 $output->writeln('Upgrading citation #' . $citation->getId());
                 $advancedCitation = AdvancedCitationHelper::prepareAdvancedCitation($citation);
                 $entityManager->persist($advancedCitation);
+
+                if ($index % 10 == 0) {
+                    $output->writeln('Saving...');
+                    $entityManager->flush();
+                }
             }
+
+            $index++;
         }
-        
+
         $entityManager->flush();
     }
 
