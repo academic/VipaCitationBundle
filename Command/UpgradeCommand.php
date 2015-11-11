@@ -54,9 +54,10 @@ class UpgradeCommand extends ContainerAwareCommand
                 $output->writeln('Upgrading citation #' . $citation->getId());
                 $advancedCitation = AdvancedCitationHelper::prepareAdvancedCitation($citation);
                 $entityManager->persist($advancedCitation);
-                $entityManager->flush();
             }
         }
+        
+        $entityManager->flush();
     }
 
 }
