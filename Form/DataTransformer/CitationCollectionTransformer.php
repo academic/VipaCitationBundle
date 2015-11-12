@@ -32,7 +32,13 @@ class CitationCollectionTransformer implements DataTransformerInterface
 
         /** @var Citation $citation */
         foreach ($citations as $citation) {
-            $advanced = AdvancedCitationHelper::prepareAdvancedCitation($citation);
+            $advanced = $this->manager
+                ->getRepository('AdvancedCitationBundle:AdvancedCitation')
+                ->findOneBy(['citation' => $citation]);
+            if (!$advanced) {
+                $advanced = AdvancedCitationHelper::prepareAdvancedCitation($citation);
+            }
+
             $collection->add($advanced);
         }
 
@@ -62,7 +68,7 @@ class CitationCollectionTransformer implements DataTransformerInterface
             if (empty($citation->getType())) {
                 $citation->setType($advancedCitation->getType());
             }
-            
+
             $collection->add($citation);
         }
 
