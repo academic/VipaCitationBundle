@@ -15,7 +15,22 @@ class AdvancedCitationHelper
 
         if ($response->getStatusCode() == 200) {
             $json = $response->getBody()->getContents();
-            $parsedCitation = json_decode($json, true)[0][1];
+            $decoded = json_decode($json, true);
+            $parsedCitation = null;
+
+            if (!empty($decoded)) {
+                $parsedCitation = $decoded[0][1];
+            } else if (!empty($entity->getRaw())) {
+                $raw = explode(',', $entity->getRaw());
+                $parsedCitation['author'] = $raw[0];
+                $parsedCitation['title'] = $raw[1];
+                $parsedCitation['pages'] = $raw[2];
+                $parsedCitation['editor'] = $raw[3];
+                $parsedCitation['publisher'] = $raw[4];
+                $parsedCitation['location'] = $raw[5];
+                $parsedCitation['language'] = $raw[6];
+                $parsedCitation['type'] = $entity->getType();
+            }
 
             if ($advancedCitation === null) {
                 $advancedCitation = new AdvancedCitation();

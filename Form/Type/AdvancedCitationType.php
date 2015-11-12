@@ -11,14 +11,14 @@ class AdvancedCitationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('author', 'text')
-            ->add('title', 'text')
-            ->add('editor', 'text')
-            ->add('pages', 'text')
-            ->add('publisher', 'text')
-            ->add('location', 'text')
-            ->add('type', 'text')
-            ->add('language', 'text')
+            ->add('author', 'text', ['required' => false])
+            ->add('title', 'text', ['required' => false])
+            ->add('editor', 'text', ['required' => false])
+            ->add('pages', 'text', ['required' => false])
+            ->add('publisher', 'text', ['required' => false])
+            ->add('location', 'text', ['required' => false])
+            ->add('type', 'text', ['required' => false])
+            ->add('language', 'text', ['required' => false])
         ;
     }
 
@@ -27,7 +27,14 @@ class AdvancedCitationType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $defaults = ['data_class' => 'OkulBilisim\AdvancedCitationBundle\Entity\AdvancedCitation'];
+        $defaults = [
+            'data_class' => 'OkulBilisim\AdvancedCitationBundle\Entity\AdvancedCitation',
+            'attr' => [
+                'novalidate' => 'novalidate',
+                'class' => 'form-validate',
+            ],
+        ];
+
         $resolver->setDefaults($defaults);
     }
 
