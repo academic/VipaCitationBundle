@@ -15,8 +15,8 @@ class CitationOrmEventSubscriber implements EventSubscriber
     public function getSubscribedEvents()
     {
         return array(
-            Events::prePersist,
-            Events::postUpdate,
+            // Events::prePersist,
+            // Events::postUpdate,
         );
     }
 
