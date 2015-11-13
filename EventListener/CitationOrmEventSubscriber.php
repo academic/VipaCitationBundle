@@ -16,6 +16,7 @@ class CitationOrmEventSubscriber implements EventSubscriber
     {
         return array(
             Events::prePersist,
+            // Events::postPersist,
             Events::postUpdate,
         );
     }
@@ -26,8 +27,31 @@ class CitationOrmEventSubscriber implements EventSubscriber
         $entityManager = $args->getObjectManager();
 
         if ($entity instanceof Citation) {
-            $advancedCitation = AdvancedCitationHelper::prepareAdvancedCitation($entity);
+            $raw = $entity->getRaw();
+
+            if(strstr($raw, PHP_EOL)) {
+                AdvancedCitationHelper::prepareAdvancedCitations($raw, $entity->getArticles()->first(), $entityManager);
+                $entityManager->remove($entity);
+            }
+        }
+    }
+
+    public function postPersist(LifecycleEventArgs $args)
+    {
+        $entity = $args->getObject();
+        $entityManager = $args->getObjectManager();
+
+        if ($entity instanceof Citation) {
+            $advancedCitation = $entityManager
+                ->getRepository('AdvancedCitationBundle:AdvancedCitation')
+                ->findOneBy(['citation' => $entity]);
+
+            if (!$advancedCitation) {
+                $advancedCitation = AdvancedCitationHelper::prepareAdvancedCitation($entity);
+            }
+
             $entityManager->persist($advancedCitation);
+            $entityManager->flush();
         }
     }
 

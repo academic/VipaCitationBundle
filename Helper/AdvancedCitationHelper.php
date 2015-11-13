@@ -2,12 +2,48 @@
 
 namespace OkulBilisim\AdvancedCitationBundle\Helper;
 
+use Doctrine\Common\Persistence\ObjectManager;
 use GuzzleHttp\Client;
+use Ojs\JournalBundle\Entity\Article;
 use Ojs\JournalBundle\Entity\Citation;
 use OkulBilisim\AdvancedCitationBundle\Entity\AdvancedCitation;
 
 class AdvancedCitationHelper
 {
+    public static function prepareAdvancedCitations($raw, Article $article, ObjectManager $entityManager)
+    {
+        $client = new Client(['base_uri' => 'http://parser.dergipark.gov.tr']);
+        $response = $client->request('GET', '/', ['query' => ['q' => $raw]]);
+        $decoded = json_decode($response->getBody()->getContents(), true);
+
+
+        if (!empty($decoded)) {
+            foreach ($decoded as $row) {
+                $parsedCitation = $row[1];
+                $rawCitation = $row[2];
+
+                $citation = new Citation();
+                $citation->setRaw(!empty($rawCitation['raw']) ? AdvancedCitationHelper::handleField($rawCitation['raw']) : null);
+                $article->addCitation($citation);
+
+                $advancedCitation = new AdvancedCitation();
+                $advancedCitation
+                    ->setCitation($citation)
+                    ->setAuthor(!empty($parsedCitation['author']) ? AdvancedCitationHelper::handleField($parsedCitation['author']) : null)
+                    ->setTitle(!empty($parsedCitation['title']) ? AdvancedCitationHelper::handleField($parsedCitation['title']) : null)
+                    ->setEditor(!empty($parsedCitation['editor']) ? AdvancedCitationHelper::handleField($parsedCitation['editor']) : null)
+                    ->setPages(!empty($parsedCitation['pages']) ? AdvancedCitationHelper::handleField($parsedCitation['pages']) : null)
+                    ->setPublisher(!empty($parsedCitation['publisher']) ? AdvancedCitationHelper::handleField($parsedCitation['publisher']) : null)
+                    ->setLocation(!empty($parsedCitation['location']) ? AdvancedCitationHelper::handleField($parsedCitation['location']) : null)
+                    ->setType(!empty($parsedCitation['type']) ? AdvancedCitationHelper::handleField($parsedCitation['type']) : null)
+                    ->setLanguage(!empty($parsedCitation['language']) ? AdvancedCitationHelper::handleField($parsedCitation['language']) : null);
+
+                $entityManager->persist($citation);
+                $entityManager->persist($advancedCitation);
+            }
+        }
+    }
+
     public static function prepareAdvancedCitation(Citation $entity, AdvancedCitation $advancedCitation = null)
     {
         $client = new Client(['base_uri' => 'http://parser.dergipark.gov.tr']);
