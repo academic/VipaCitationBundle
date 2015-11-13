@@ -252,8 +252,7 @@ class AdvancedCitation
      */
     function __toString()
     {
-        return sprintf(
-            '%s, %s, %s, %s, %s, %s, %s',
+        $properties = [
             $this->getAuthor(),
             $this->getTitle(),
             $this->getPages(),
@@ -261,6 +260,14 @@ class AdvancedCitation
             $this->getPublisher(),
             $this->getLocation(),
             $this->getLanguage()
-        );
+        ];
+
+        $properties = array_filter($properties);
+
+        if (!empty($properties)) {
+            return implode(',');
+        }
+
+        return '';
     }
 }
