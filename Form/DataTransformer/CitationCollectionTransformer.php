@@ -60,7 +60,10 @@ class CitationCollectionTransformer implements DataTransformerInterface
         /** @var AdvancedCitation $advancedCitation */
         foreach ($advancedCitations as $advancedCitation) {
             $citation = $advancedCitation->getCitation();
-
+            if(is_null($citation)){
+                $citation = new Citation();
+                $advancedCitation->setCitation($citation);
+            }
             if (empty($citation->getRaw())) {
                 $citation->setRaw($advancedCitation);
             }
@@ -69,6 +72,8 @@ class CitationCollectionTransformer implements DataTransformerInterface
                 $citation->setType($advancedCitation->getType());
             }
 
+            $this->manager->persist($citation);
+            $this->manager->persist($advancedCitation);
             $collection->add($citation);
         }
 

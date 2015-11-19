@@ -1,7 +1,11 @@
 <div id="paste-citations">
     <label for="raw-citations">{{ 'citation.raw'|trans }}</label>
-    <textarea class="form-control" name="raw_citations" id="raw-citations"></textarea>
+    <textarea class="form-control no-radius" id="raw-citations"></textarea>
     <p class="help-block">{{ 'citation.raw.help'|trans }}</p>
 </div>
-
+<div class="row">
+    <div class="col-sm-12">
+        <button class="btn btn-primary pull-right" type="button" id="parse-citations-button">{{ 'parse.citations'|trans }}</button>
+    </div>
+</div>
 <hr>

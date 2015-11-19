@@ -1,9 +1,13 @@
 <?php
+
 namespace OkulBilisim\AdvancedCitationBundle\Controller;
 
 use Ojs\CoreBundle\Controller\OjsController;
+use Ojs\JournalBundle\Entity\Article;
 use OkulBilisim\AdvancedCitationBundle\Entity\AdvancedCitation;
 use OkulBilisim\AdvancedCitationBundle\Form\Type\AdvancedCitationType;
+use OkulBilisim\AdvancedCitationBundle\Form\Type\ArticleSubmissionType;
+use OkulBilisim\AdvancedCitationBundle\Helper\AdvancedCitationHelper;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -118,5 +122,23 @@ class AdvancedCitationController extends OjsController
         $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
+    }
+
+    public function citationsToFormAction(Request $request)
+    {
+        $rawCitations = $request->get('rawCitations');
+        $article = new Article();
+        $em = $this->getDoctrine()->getManager();
+        AdvancedCitationHelper::prepareAdvancedCitations($rawCitations, $article, $em);
+        $form = $this->createForm(
+            new ArticleSubmissionType($em),
+            $article
+        );
+        return $this->render(
+            'AdvancedCitationBundle:AdvancedCitation:advanced_citations_form.html.twig',
+            [
+                'form' => $form->createView()
+            ]
+        );
     }
 }

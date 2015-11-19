@@ -49,6 +49,45 @@ class AdvancedCitationHelper
         }
     }
 
+    public static function parseRawCitations($rawCitations)
+    {
+        $client = new Client(['base_uri' => 'http://parser.dergipark.gov.tr']);
+        $response = $client->request('GET', '/', ['query' => ['q' => $rawCitations]]);
+        $decoded = json_decode($response->getBody()->getContents(), true);
+        $advancedCitationEntities = [];
+
+        if (!empty($decoded)) {
+            $rowCounter = 1;
+
+            foreach ($decoded as $row) {
+                $parsedCitation = $row[1];
+                $rawCitation = $row[2];
+
+                $citation = new Citation();
+                $citation->setOrderNum($rowCounter);
+                $citation->setRaw(!empty($rawCitation['raw']) ? AdvancedCitationHelper::handleField($rawCitation['raw']) : null);
+                $citation->setType(!empty($parsedCitation['type']) ? AdvancedCitationHelper::handleField($parsedCitation['type']) : null);
+
+                $advancedCitation = new AdvancedCitation();
+                $advancedCitation
+                    ->setCitation($citation)
+                    ->setAuthor(!empty($parsedCitation['author']) ? AdvancedCitationHelper::handleField($parsedCitation['author']) : null)
+                    ->setTitle(!empty($parsedCitation['title']) ? AdvancedCitationHelper::handleField($parsedCitation['title']) : null)
+                    ->setEditor(!empty($parsedCitation['editor']) ? AdvancedCitationHelper::handleField($parsedCitation['editor']) : null)
+                    ->setPages(!empty($parsedCitation['pages']) ? AdvancedCitationHelper::handleField($parsedCitation['pages']) : null)
+                    ->setPublisher(!empty($parsedCitation['publisher']) ? AdvancedCitationHelper::handleField($parsedCitation['publisher']) : null)
+                    ->setLocation(!empty($parsedCitation['location']) ? AdvancedCitationHelper::handleField($parsedCitation['location']) : null)
+                    ->setType(!empty($parsedCitation['type']) ? AdvancedCitationHelper::handleField($parsedCitation['type']) : null)
+                    ->setLanguage(!empty($parsedCitation['language']) ? AdvancedCitationHelper::handleField($parsedCitation['language']) : null);
+
+                $entityManager->persist($citation);
+                $entityManager->persist($advancedCitation);
+                $advancedCitationEntities[] = $advancedCitation;
+            }
+        }
+        return $advancedCitationEntities;
+    }
+
     public static function prepareAdvancedCitation(Citation $entity, AdvancedCitation $advancedCitation = null)
     {
         $client = new Client(['base_uri' => 'http://parser.dergipark.gov.tr']);

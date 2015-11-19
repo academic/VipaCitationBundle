@@ -60,7 +60,6 @@ class CitationEventSubscriber implements EventSubscriberInterface
         return array(
             CitationEvents::CITATION_EDIT => 'onEditViewRequested',
             JournalEvents::JOURNAL_SUBMISSION_FORM => 'onSubmissionFormRequested',
-            JournalEvents::JOURNAL_SUBMISSION_RAW_CITATION => 'onRawCitationPosted',
         );
     }
 
@@ -79,10 +78,5 @@ class CitationEventSubscriber implements EventSubscriberInterface
     public function onSubmissionFormRequested(SubmissionFormEvent $event)
     {
         $event->setType(new ArticleSubmissionType($this->manager));
-    }
-
-    public function onRawCitationPosted(CitationRawEvent $event)
-    {
-        AdvancedCitationHelper::prepareAdvancedCitations($event->getRaw(), $event->getArticle(), $this->manager);
     }
 }

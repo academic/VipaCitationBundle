@@ -1,0 +1,13 @@
+<script>
+    $('#parse-citations-button').on('click', function(){
+        var rawCitations = $('#raw-citations').val();
+        $('#raw-citations').val('');
+        $.ajax({
+            url: "{{ path('okulbilisim_advancedcitation_rest_parse') }}",
+            method: "POST",
+            data: {rawCitations: rawCitations},
+            success: function(result){
+                $('#citation-forms-container').append(result);
+            }});
+    });
+</script>

@@ -6,3 +6,8 @@ okulbilisim_advancedcitation_update:
     path:     /{journalId}/article/{articleId}/advanced-citation/{id}/update
     defaults: { _controller: "AdvancedCitationBundle:AdvancedCitation:update" }
     methods:  [PUT]
+
+okulbilisim_advancedcitation_rest_parse:
+    path:     /citations-to-form/
+    defaults: { _controller: "AdvancedCitationBundle:AdvancedCitation:citationsToForm" }
+    methods:  [POST]

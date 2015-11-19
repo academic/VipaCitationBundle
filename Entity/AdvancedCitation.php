@@ -264,8 +264,8 @@ class AdvancedCitation
 
         $properties = array_filter($properties);
 
-        if (!empty($properties)) {
-            return implode(',');
+        if (count($properties)>0) {
+            return implode(',', $properties);
         }
 
         return '';

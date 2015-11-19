@@ -50,6 +50,7 @@ class TwigEventSubscriber implements EventSubscriberInterface
         return array(
             TwigEvents::OJS_SUBMISSION_CITATION_VIEW => 'onCitationView',
             TwigEvents::OJS_SUBMISSION_CITATION_FORM_EXTRA => 'onCitationFormExtrasRequested',
+            TwigEvents::OJS_NEW_ARTICLE_SUBMISSIN_SCRIPT => 'onNewArticleSubmissionScript',
         );
     }
 
@@ -71,6 +72,15 @@ class TwigEventSubscriber implements EventSubscriberInterface
     {
         $template = $this->twig->render(
             'AdvancedCitationBundle:AdvancedCitation:raw.html.twig'
+        );
+
+        $event->setTemplate($template);
+    }
+
+    public function onNewArticleSubmissionScript(TwigEvent $event)
+    {
+        $template = $this->twig->render(
+            'AdvancedCitationBundle:AdvancedCitation:script.html.twig'
         );
 
         $event->setTemplate($template);
