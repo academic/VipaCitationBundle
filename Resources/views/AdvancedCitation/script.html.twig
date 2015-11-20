@@ -1,5 +1,6 @@
 <script>
     $('#parse-citations-button').on('click', function(){
+        $(this).removeClass('btn-primary').addClass('btn-warning').html('{{ 'loading'|trans }}...').prop('disabled', true);
         var rawCitations = $('#raw-citations').val();
         var subformCount = $('#parse-citations-button').parent().parent().parent().find('.submission-subform').length;
         $('#raw-citations').val('');
@@ -11,6 +12,7 @@
                 itemCount: subformCount
             },
             success: function(result){
+                $('#parse-citations-button').removeClass('btn-warning').addClass('btn-primary').html('{{ 'parse.citations'|trans }}').prop('disabled', false);
                 $('#citation-forms-container').append(result);
             }});
     });
