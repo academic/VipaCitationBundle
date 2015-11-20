@@ -1,11 +1,15 @@
 <script>
     $('#parse-citations-button').on('click', function(){
         var rawCitations = $('#raw-citations').val();
+        var subformCount = $('#parse-citations-button').parent().parent().parent().find('.submission-subform').length;
         $('#raw-citations').val('');
         $.ajax({
             url: "{{ path('okulbilisim_advancedcitation_rest_parse') }}",
             method: "POST",
-            data: {rawCitations: rawCitations},
+            data: {
+                rawCitations: rawCitations,
+                itemCount: subformCount
+            },
             success: function(result){
                 $('#citation-forms-container').append(result);
             }});

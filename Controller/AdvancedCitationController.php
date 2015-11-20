@@ -4,6 +4,7 @@ namespace OkulBilisim\AdvancedCitationBundle\Controller;
 
 use Ojs\CoreBundle\Controller\OjsController;
 use Ojs\JournalBundle\Entity\Article;
+use Ojs\JournalBundle\Entity\Citation;
 use OkulBilisim\AdvancedCitationBundle\Entity\AdvancedCitation;
 use OkulBilisim\AdvancedCitationBundle\Form\Type\AdvancedCitationType;
 use OkulBilisim\AdvancedCitationBundle\Form\Type\ArticleSubmissionType;
@@ -127,7 +128,11 @@ class AdvancedCitationController extends OjsController
     public function citationsToFormAction(Request $request)
     {
         $rawCitations = $request->get('rawCitations');
+        $dummyItemCount = $request->get('itemCount')+5;
         $article = new Article();
+        foreach(range(1,$dummyItemCount) as $count){
+            $article->addCitation(new Citation());
+        }
         $em = $this->getDoctrine()->getManager();
         AdvancedCitationHelper::prepareAdvancedCitations($rawCitations, $article, $em);
         $form = $this->createForm(
@@ -137,7 +142,8 @@ class AdvancedCitationController extends OjsController
         return $this->render(
             'AdvancedCitationBundle:AdvancedCitation:advanced_citations_form.html.twig',
             [
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'dummyItemCount' => $dummyItemCount
             ]
         );
     }
