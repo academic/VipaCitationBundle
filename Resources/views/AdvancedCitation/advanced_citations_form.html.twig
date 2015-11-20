@@ -1,5 +1,5 @@
 {% for index,citationForm in form.citations %}
     {% if index > dummyItemCount-1 %}
-        {{ include('@OjsJournal/ArticleSubmission/_citiation_subform.html.twig', { 'form': citationForm }) }}
+        {{ include('AdvancedCitationBundle:AdvancedCitation:_citation_subform.html.twig', { 'form': citationForm }) }}
     {% endif %}
 {% endfor %}
