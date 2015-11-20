@@ -11,14 +11,62 @@ class AdvancedCitationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('author', 'text', ['required' => false])
-            ->add('title', 'text', ['required' => false])
-            ->add('editor', 'text', ['required' => false])
-            ->add('pages', 'text', ['required' => false])
-            ->add('publisher', 'text', ['required' => false])
-            ->add('location', 'text', ['required' => false])
-            ->add('type', 'text', ['required' => false])
-            ->add('language', 'text', ['required' => false])
+            ->add('author', 'text', [
+                'required' => false,
+                'attr' => [
+                    'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('title', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('editor', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('pages', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('publisher', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('location', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('type', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('language', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
         ;
     }
 
