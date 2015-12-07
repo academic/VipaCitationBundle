@@ -28,51 +28,159 @@ class AdvancedCitation
 
     /**
      * @var string
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $author;
 
     /**
      * @var string
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $title;
 
     /**
      * @var string
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $editor;
 
     /**
      * @var string
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $pages;
 
     /**
      * @var string
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $publisher;
 
     /**
      * @var string
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $location;
 
     /**
      * @var string
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $type;
 
     /**
      * @var string
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $language;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $address;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $annote;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $booktitle;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $chapter;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $crossref;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $edition;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $eprint;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $howpublished;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $key;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $month;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $note;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $number;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $organization;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $school;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $series;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $url;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $volume;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $year;
 
     /**
      * @return int
@@ -245,6 +353,331 @@ class AdvancedCitation
     }
 
     /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string $address
+     * @return AdvancedCitation
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAnnote()
+    {
+        return $this->annote;
+    }
+
+    /**
+     * @param string $annote
+     * @return AdvancedCitation
+     */
+    public function setAnnote($annote)
+    {
+        $this->annote = $annote;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBooktitle()
+    {
+        return $this->booktitle;
+    }
+
+    /**
+     * @param string $booktitle
+     * @return AdvancedCitation
+     */
+    public function setBooktitle($booktitle)
+    {
+        $this->booktitle = $booktitle;
+        return $this;
+    }
+
+    /**
+     * @return string
+     * @return AdvancedCitation
+     */
+    public function getChapter()
+    {
+        return $this->chapter;
+    }
+
+    /**
+     * @param string $chapter
+     * @return AdvancedCitation
+     */
+    public function setChapter($chapter)
+    {
+        $this->chapter = $chapter;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCrossref()
+    {
+        return $this->crossref;
+    }
+
+    /**
+     * @param string $crossref
+     * @return AdvancedCitation
+     */
+    public function setCrossref($crossref)
+    {
+        $this->crossref = $crossref;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEdition()
+    {
+        return $this->edition;
+    }
+
+    /**
+     * @param string $edition
+     * @return AdvancedCitation
+     */
+    public function setEdition($edition)
+    {
+        $this->edition = $edition;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEprint()
+    {
+        return $this->eprint;
+    }
+
+    /**
+     * @param string $eprint
+     * @return AdvancedCitation
+     */
+    public function setEprint($eprint)
+    {
+        $this->eprint = $eprint;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHowpublished()
+    {
+        return $this->howpublished;
+    }
+
+    /**
+     * @param string $howpublished
+     * @return AdvancedCitation
+     */
+    public function setHowpublished($howpublished)
+    {
+        $this->howpublished = $howpublished;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getKey()
+    {
+        return $this->key;
+    }
+
+    /**
+     * @param string $key
+     * @return AdvancedCitation
+     */
+    public function setKey($key)
+    {
+        $this->key = $key;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMonth()
+    {
+        return $this->month;
+    }
+
+    /**
+     * @param string $month
+     * @return AdvancedCitation
+     */
+    public function setMonth($month)
+    {
+        $this->month = $month;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param string $note
+     * @return AdvancedCitation
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * @param string $number
+     * @return AdvancedCitation
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOrganization()
+    {
+        return $this->organization;
+    }
+
+    /**
+     * @param string $organization
+     * @return AdvancedCitation
+     */
+    public function setOrganization($organization)
+    {
+        $this->organization = $organization;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSchool()
+    {
+        return $this->school;
+    }
+
+    /**
+     * @param string $school
+     * @return AdvancedCitation
+     */
+    public function setSchool($school)
+    {
+        $this->school = $school;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSeries()
+    {
+        return $this->series;
+    }
+
+    /**
+     * @param string $series
+     * @return AdvancedCitation
+     */
+    public function setSeries($series)
+    {
+        $this->series = $series;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param string $url
+     * @return AdvancedCitation
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVolume()
+    {
+        return $this->volume;
+    }
+
+    /**
+     * @param string $volume
+     * @return AdvancedCitation
+     */
+    public function setVolume($volume)
+    {
+        $this->volume = $volume;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getYear()
+    {
+        return $this->year;
+    }
+
+    /**
+     * @param string $year
+     * @return AdvancedCitation
+     */
+    public function setYear($year)
+    {
+        $this->year = $year;
+        return $this;
+    }
+
+    /**
      * The __toString method allows a class to decide how it will react when it is converted to a string.
      *
      * @return string
@@ -259,7 +692,25 @@ class AdvancedCitation
             $this->getEditor(),
             $this->getPublisher(),
             $this->getLocation(),
-            $this->getLanguage()
+            $this->getLanguage(),
+            $this->getAddress(),
+            $this->getAnnote(),
+            $this->getBooktitle(),
+            $this->getChapter(),
+            $this->getCrossref(),
+            $this->getEdition(),
+            $this->getEprint(),
+            $this->getHowpublished(),
+            $this->getAnnote(),
+            $this->getKey(),
+            $this->getYear(),
+            $this->getUrl(),
+            $this->getSeries(),
+            $this->getMonth(),
+            $this->getNote(),
+            $this->getOrganization(),
+            $this->getSchool(),
+            $this->getVolume()
         ];
 
         $properties = array_filter($properties);
