@@ -67,6 +67,132 @@ class AdvancedCitationType extends AbstractType
                     ]
                 ]
             )
+            ->add('address', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('annote', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('booktitle', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('chapter', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('crossref', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('edition', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('eprint', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('howpublished', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('key', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('month', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('note', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('number', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('organization', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('school', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('series', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('url', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('volume', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
+            ->add('year', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm'
+                    ]
+                ]
+            )
         ;
     }
 
