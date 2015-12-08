@@ -36,11 +36,9 @@
                 currentSubform.find('[data-name="'+value+'"]').parent().parent().removeClass('hidden');
                 if($.inArray(value, mustTypes) !== -1){
                     currentSubform.find('[data-name="'+value+'"]').parent().parent().find('label').addClass('required');
-                    console.log(currentSubform.find('[data-name="'+value+'"]'));
                 }
                 if($.inArray(value, shouldTypes) !== -1){
                     currentSubform.find('[data-name="'+value+'"]').parent().parent().find('label').removeClass('required');
-                    console.log(currentSubform.find('[data-name="'+value+'"]'));
                 }
             });
         });
