@@ -236,6 +236,14 @@ class AdvancedCitationType extends AbstractType
                     ]
                 ]
             )
+            ->add('journal', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm',
+                        'data-name' => 'journal'
+                    ]
+                ]
+            )
         ;
     }
 

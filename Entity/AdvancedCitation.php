@@ -183,6 +183,12 @@ class AdvancedCitation
     private $year;
 
     /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $journal;
+
+    /**
      * @return int
      */
     public function getId()
@@ -674,6 +680,24 @@ class AdvancedCitation
     public function setYear($year)
     {
         $this->year = $year;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getJournal()
+    {
+        return $this->journal;
+    }
+
+    /**
+     * @param string $journal
+     * @return AdvancedCitation
+     */
+    public function setJournal($journal)
+    {
+        $this->journal = $journal;
         return $this;
     }
 
