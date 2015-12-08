@@ -1,5 +1,5 @@
 <script>
-    var  bibliography_params = {{ bibliographyParams|raw }};
+    var  citation_params = {{ bibliographyParams|raw }};
     $('#parse-citations-button').on('click', function(){
         $(this).removeClass('btn-primary').addClass('btn-warning').html('{{ 'loading'|trans }}...').prop('disabled', true);
         var rawCitations = $('#raw-citations').val();
@@ -17,4 +17,26 @@
                 $('#citation-forms-container').append(result);
             }});
     });
+    function reviseAdvancedCitationFormInputs(){
+        $.each($('#citation-forms-container').find('.submission-subform'), function (index, value) {
+            var currentSubform = $(this);
+            var citationType = $(this).find('.citation-type').val();
+            var mergeMustShouldFields = citation_params.parameters.citation_types[citationType].must.concat(
+                    citation_params.parameters.citation_types[citationType].should
+            );
+            //hide not existing fields
+            $.each(currentSubform.find('.form-group'), function (index, value) {
+                var inputDataName = $(this).find('input').attr('data-name');
+                if(typeof inputDataName != 'undefined' && $.inArray(inputDataName, mergeMustShouldFields) === -1){
+                    $(this).addClass('hidden');
+                }
+            });
+            //show existing fields
+            $.each(mergeMustShouldFields, function (index, value) {
+                currentSubform.find('[data-name="'+value+'"]').parent().parent().removeClass('hidden');
+            });
+        });
+    }
+    reviseAdvancedCitationFormInputs();
+    setInterval(function(){ reviseAdvancedCitationFormInputs(); }, 1500);
 </script>

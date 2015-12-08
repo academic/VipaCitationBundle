@@ -11,185 +11,228 @@ class AdvancedCitationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('type', 'choice', [
+                'required' => true,
+                'choices'   => [
+                    'book' => 'book',
+                    'journal' => 'journal',
+                    'conference' => 'conference',
+                    'article' => 'article',
+                    'masterthesis' => 'masterthesis',
+                    'phdthesis' => 'phdthesis',
+                    'proceedings' => 'proceedings',
+                    'techreport' => 'techreport',
+                    'unpublished' => 'unpublished',
+                    'inproceedings' => 'inproceedings',
+                    'incollection' => 'incollection',
+                    'inbook' => 'inbook',
+                    'booklet' => 'booklet',
+                    'manual' => 'manual',
+                    'misc' => 'misc',
+                ],
+                'attr' => [
+                    'class' => 'input-sm citation-type',
+                    'data-name' => 'type'
+                ]
+                ]
+            )
             ->add('author', 'text', [
                 'required' => false,
                 'attr' => [
-                    'class' => 'input-sm'
+                    'class' => 'input-sm',
+                    'data-name' => 'author'
                     ]
                 ]
             )
             ->add('title', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'title'
                     ]
                 ]
             )
             ->add('editor', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'editor'
                     ]
                 ]
             )
             ->add('pages', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'pages'
                     ]
                 ]
             )
             ->add('publisher', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'publisher'
                     ]
                 ]
             )
             ->add('location', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
-                    ]
-                ]
-            )
-            ->add('type', 'text', [
-                    'required' => false,
-                    'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'location'
                     ]
                 ]
             )
             ->add('language', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'language'
                     ]
                 ]
             )
             ->add('address', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'address'
                     ]
                 ]
             )
             ->add('annote', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'annote'
                     ]
                 ]
             )
             ->add('booktitle', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'booktitle'
                     ]
                 ]
             )
             ->add('chapter', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'chapter'
                     ]
                 ]
             )
             ->add('crossref', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'crossref'
                     ]
                 ]
             )
             ->add('edition', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'edition'
                     ]
                 ]
             )
             ->add('eprint', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'eprint'
                     ]
                 ]
             )
             ->add('howpublished', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'howpublished'
                     ]
                 ]
             )
             ->add('key', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'key'
                     ]
                 ]
             )
             ->add('month', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'month'
                     ]
                 ]
             )
             ->add('note', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'note'
                     ]
                 ]
             )
             ->add('number', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'number'
                     ]
                 ]
             )
             ->add('organization', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'organization'
                     ]
                 ]
             )
             ->add('school', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'school'
                     ]
                 ]
             )
             ->add('series', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'series'
                     ]
                 ]
             )
             ->add('url', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'url'
                     ]
                 ]
             )
             ->add('volume', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'volume'
                     ]
                 ]
             )
             ->add('year', 'text', [
                     'required' => false,
                     'attr' => [
-                        'class' => 'input-sm'
+                        'class' => 'input-sm',
+                        'data-name' => 'year'
                     ]
                 ]
             )
