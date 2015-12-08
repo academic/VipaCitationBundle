@@ -14,6 +14,6 @@ services:
           - { name: kernel.event_subscriber }
   advanced_citation.twig_subscriber:
       class: OkulBilisim\AdvancedCitationBundle\EventListener\TwigEventSubscriber
-      arguments: [@doctrine.orm.entity_manager, @twig]
+      arguments: [@doctrine.orm.entity_manager, @twig, %kernel.root_dir%]
       tags:
           - { name: kernel.event_subscriber }

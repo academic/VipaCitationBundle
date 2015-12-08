@@ -7,6 +7,7 @@ use Ojs\CoreBundle\Events\TwigEvent;
 use Ojs\CoreBundle\Events\TwigEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Twig_Environment;
+use Symfony\Component\Yaml\Parser;
 
 class TwigEventSubscriber implements EventSubscriberInterface
 {
@@ -16,15 +17,18 @@ class TwigEventSubscriber implements EventSubscriberInterface
     /** @var Twig_Environment */
     private $twig;
 
+    private $kernelRootDir;
+
     /**
      * TwigEventSubscriber constructor.
      * @param EntityManager $em
      * @param Twig_Environment $twig
      */
-    public function __construct(EntityManager $em, Twig_Environment $twig)
+    public function __construct(EntityManager $em, Twig_Environment $twig, $kernelRootDir)
     {
         $this->em = $em;
         $this->twig = $twig;
+        $this->kernelRootDir = $kernelRootDir;
     }
 
     /**
@@ -79,8 +83,18 @@ class TwigEventSubscriber implements EventSubscriberInterface
 
     public function onNewArticleSubmissionScript(TwigEvent $event)
     {
+        $yamlParser = new Parser();
+        $bibliographyParams = $yamlParser->parse(
+            file_get_contents(
+                $this->kernelRootDir.
+                '/config/bibliography_params.yml'
+            )
+        );
         $template = $this->twig->render(
-            'AdvancedCitationBundle:AdvancedCitation:script.html.twig'
+            'AdvancedCitationBundle:AdvancedCitation:script.html.twig',
+            [
+                'bibliographyParams' => json_encode($bibliographyParams)
+            ]
         );
 
         $event->setTemplate($template);

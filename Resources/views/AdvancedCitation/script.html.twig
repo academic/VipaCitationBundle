@@ -1,4 +1,5 @@
 <script>
+    var  bibliography_params = {{ bibliographyParams|raw }};
     $('#parse-citations-button').on('click', function(){
         $(this).removeClass('btn-primary').addClass('btn-warning').html('{{ 'loading'|trans }}...').prop('disabled', true);
         var rawCitations = $('#raw-citations').val();
