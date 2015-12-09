@@ -19,6 +19,7 @@ class UpgradeCommand extends ContainerAwareCommand
         $this
             ->setName('ojs:advanced-citation:upgrade')
             ->setDescription('Upgrades already existing citations to advanced ones')
+            ->addOption('all', '--all')
         ;
     }
 
@@ -41,32 +42,32 @@ class UpgradeCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        /** @var EntityManager $entityManager */
-        $entityManager = $this->getContainer()->get('doctrine.orm.entity_manager');
-        $citations = $entityManager->getRepository('OjsJournalBundle:Citation')->findAll();
+        $all = $input->getOption('all');
+        /** @var EntityManager $em */
+        $em = $this->getContainer()->get('doctrine.orm.entity_manager');
+        $citations = $em->getRepository('OjsJournalBundle:Citation')->findAll();
 
         $index = 0;
 
         foreach ($citations as $citation) {
-            $advancedCitation = $entityManager
+            $advancedCitation = $em
                 ->getRepository('AdvancedCitationBundle:AdvancedCitation')
                 ->findOneBy(['citation' => $citation]);
 
-            if (!$advancedCitation) {
+            if (!$advancedCitation || $all) {
                 $output->writeln('Upgrading citation #' . $citation->getId());
-                $advancedCitation = AdvancedCitationHelper::prepareAdvancedCitation($citation);
-                $entityManager->persist($advancedCitation);
+                $prepareAdvancedCitation = AdvancedCitationHelper::prepareAdvancedCitation($citation, $advancedCitation);
+                $em->persist($prepareAdvancedCitation);
 
                 if ($index % 10 == 0) {
                     $output->writeln('Saving...');
-                    $entityManager->flush();
+                    $em->flush();
                 }
             }
 
             $index++;
         }
-
-        $entityManager->flush();
+        $em->flush();
     }
 
 }
