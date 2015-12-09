@@ -2,7 +2,7 @@
     {% for field, desc in citationParams.parameters.citation_setting_keys %}
         {% if attribute(advancedCitation, field) is not empty %}
             <tr>
-                <th>{{ ('title.' ~ field) |trans }}</th>
+                <th>{{ field|trans }}</th>
                 <td>{{ attribute(advancedCitation, field) }}</td>
             </tr>
         {% endif %}
