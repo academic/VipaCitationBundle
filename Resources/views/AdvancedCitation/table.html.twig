@@ -1,57 +1,10 @@
 {% if advancedCitation is not null %}
-    {% if advancedCitation.author is not empty %}
-    <tr>
-        <th>{{ 'title.authors'|trans }}</th>
-        <td>{{ advancedCitation.author }}</td>
-    </tr>
-    {% endif %}
-
-    {% if advancedCitation.title is not empty %}
-    <tr>
-        <th>{{ 'title'|trans }}</th>
-        <td>{{ advancedCitation.title }}</td>
-    </tr>
-    {% endif %}
-
-    {% if advancedCitation.editor is not empty %}
-    <tr>
-        <th>{{ 'journal.editor'|trans }}</th>
-        <td>{{ advancedCitation.editor }}</td>
-    </tr>
-    {% endif %}
-
-    {% if advancedCitation.pages is not empty %}
-    <tr>
-        <th>{{ 'page.plural'|trans }}</th>
-        <td>{{ advancedCitation.pages }}</td>
-    </tr>
-    {% endif %}
-
-    {% if advancedCitation.publisher is not empty %}
-    <tr>
-        <th>{{ 'publisher'|trans }}</th>
-        <td>{{ advancedCitation.publisher }}</td>
-    </tr>
-    {% endif %}
-
-    {% if advancedCitation.location is not empty %}
-    <tr>
-        <th>{{ 'location'|trans }}</th>
-        <td>{{ advancedCitation.location }}</td>
-    </tr>
-    {% endif %}
-
-    {% if advancedCitation.type is not empty %}
-    <tr>
-        <th>{{ 'type'|trans }}</th>
-        <td>{{ advancedCitation.type }}</td>
-    </tr>
-    {% endif %}
-
-    {% if advancedCitation.language is not empty %}
-    <tr>
-        <th>{{ 'title.languages'|trans }}</th>
-        <td>{{ advancedCitation.language }}</td>
-    </tr>
-    {% endif %}
+    {% for field, desc in citationParams.parameters.citation_setting_keys %}
+        {% if attribute(advancedCitation, field) is not empty %}
+            <tr>
+                <th>{{ ('title.' ~ field) |trans }}</th>
+                <td>{{ attribute(advancedCitation, field) }}</td>
+            </tr>
+        {% endif %}
+    {% endfor %}
 {% endif %}

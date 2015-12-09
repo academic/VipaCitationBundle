@@ -60,13 +60,23 @@ class TwigEventSubscriber implements EventSubscriberInterface
 
     public function onCitationView(TwigEvent $event)
     {
+        $yamlParser = new Parser();
+        $citationParams = $yamlParser->parse(
+            file_get_contents(
+                $this->kernelRootDir.
+                '/config/bibliography_params.yml'
+            )
+        );
         $advancedCitation = $this->em
             ->getRepository('AdvancedCitationBundle:AdvancedCitation')
             ->findOneBy(['citation' => $event->getOptions()['citation']]);
 
         $template = $this->twig->render(
             'AdvancedCitationBundle:AdvancedCitation:table.html.twig',
-            ['advancedCitation' => $advancedCitation]
+            [
+                'advancedCitation' => $advancedCitation,
+                'citationParams' => $citationParams
+            ]
         );
 
         $event->setTemplate($template);
