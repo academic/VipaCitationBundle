@@ -14,26 +14,25 @@ class AdvancedCitationType extends AbstractType
             ->add('type', 'choice', [
                 'required' => true,
                 'choices'   => [
-                    'book' => 'book',
-                    'journal' => 'journal',
-                    'conference' => 'conference',
                     'article' => 'article',
+                    'book' => 'book',
+                    'booklet' => 'booklet',
+                    'conference' => 'conference',
+                    'inbook' => 'inbook',
+                    'incollection' => 'incollection',
+                    'inproceedings' => 'inproceedings',
+                    'manual' => 'manual',
                     'masterthesis' => 'masterthesis',
+                    'misc' => 'misc',
                     'phdthesis' => 'phdthesis',
                     'proceedings' => 'proceedings',
                     'techreport' => 'techreport',
                     'unpublished' => 'unpublished',
-                    'inproceedings' => 'inproceedings',
-                    'incollection' => 'incollection',
-                    'inbook' => 'inbook',
-                    'booklet' => 'booklet',
-                    'manual' => 'manual',
-                    'misc' => 'misc',
                 ],
                 'attr' => [
                     'class' => 'input-sm citation-type',
                     'data-name' => 'type'
-                ]
+                    ]
                 ]
             )
             ->add('author', 'text', [
