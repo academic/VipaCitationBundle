@@ -34,6 +34,11 @@ class AdvancedCitation
 
     /**
      * @var string
+     */
+    private $citationRaw;
+
+    /**
+     * @var string
      * @ORM\Column(type="string", nullable=true)
      */
     private $title;
@@ -698,6 +703,24 @@ class AdvancedCitation
     public function setJournal($journal)
     {
         $this->journal = $journal;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCitationRaw()
+    {
+        return $this->citationRaw;
+    }
+
+    /**
+     * @param string $citationRaw
+     * @return AdvancedCitation
+     */
+    public function setCitationRaw($citationRaw)
+    {
+        $this->citationRaw = $citationRaw;
         return $this;
     }
 

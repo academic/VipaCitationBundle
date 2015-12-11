@@ -38,7 +38,7 @@ class CitationCollectionTransformer implements DataTransformerInterface
             if (!$advanced) {
                 $advanced = AdvancedCitationHelper::prepareAdvancedCitation($citation);
             }
-
+            $advanced->setCitationRaw($citation->getRaw());
             $collection->add($advanced);
         }
 
@@ -65,7 +65,7 @@ class CitationCollectionTransformer implements DataTransformerInterface
                 $advancedCitation->setCitation($citation);
             }
             if (empty($citation->getRaw())) {
-                $citation->setRaw($advancedCitation);
+                $citation->setRaw($advancedCitation->getCitationRaw());
             }
 
             if (empty($citation->getType())) {

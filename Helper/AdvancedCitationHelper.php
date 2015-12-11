@@ -76,6 +76,7 @@ class AdvancedCitationHelper
             }
 
             $advancedCitation->setCitation($citation);
+            $advancedCitation->setCitationRaw($citation->getRaw());
             if(is_array($parsedCitation)){
                 foreach($parsedCitation as $citationField => $citationFieldValue){
                     $handleField = AdvancedCitationHelper::handleField($citationFieldValue);

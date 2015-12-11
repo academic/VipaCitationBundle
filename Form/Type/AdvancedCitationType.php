@@ -243,6 +243,13 @@ class AdvancedCitationType extends AbstractType
                     ]
                 ]
             )
+            ->add('citationRaw', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'data-name' => 'citationRaw'
+                    ]
+                ]
+            )
         ;
     }
 
