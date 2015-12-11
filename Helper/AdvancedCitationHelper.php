@@ -14,33 +14,19 @@ class AdvancedCitationHelper
     public static function prepareAdvancedCitations($raw, Article $article, ObjectManager $entityManager)
     {
         $accessor = PropertyAccess::createPropertyAccessor();
-        $client = new Client(['base_uri' => 'http://parser.dergipark.gov.tr']);
-        $response = $client->request('GET', '/', ['query' => ['q' => $raw]]);
-        $decodedCitations = json_decode($response->getBody()->getContents(), true);
+        $explodeCitationsRaw = array_filter(explode("\n",$raw));
 
-        if (!empty($decodedCitations)) {
+        if (!empty($explodeCitationsRaw)) {
             $rowCounter = 1;
 
-            foreach ($decodedCitations as $decodedCitation) {
-                $parsedCitation = $decodedCitation[1];
-                $rawCitation = $decodedCitation[2];
+            foreach ($explodeCitationsRaw as $citationRaw) {
 
                 $citation = new Citation();
                 $citation->setOrderNum($rowCounter);
-                $citation->setRaw(!empty($rawCitation['raw']) ? AdvancedCitationHelper::handleField($rawCitation['raw']) : null);
-                $citation->setType(!empty($parsedCitation['type']) ? AdvancedCitationHelper::handleField($parsedCitation['type']) : null);
+                $citation->setRaw($citationRaw);
                 $article->addCitation($citation);
 
-                $advancedCitation = new AdvancedCitation();
-                $advancedCitation->setCitation($citation);
-                foreach($parsedCitation as $citationField => $citationFieldValue){
-                    $handleField = AdvancedCitationHelper::handleField($citationFieldValue);
-                    if($accessor->isWritable($advancedCitation, $citationField)){
-                        $accessor->setValue($advancedCitation, $citationField, $handleField);
-                    }
-                }
                 $entityManager->persist($citation);
-                $entityManager->persist($advancedCitation);
                 $rowCounter++;
             }
         }
@@ -75,6 +61,7 @@ class AdvancedCitationHelper
                 $advancedCitation = new AdvancedCitation();
             }
 
+            $citation->setType(!empty($parsedCitation['type']) ? AdvancedCitationHelper::handleField($parsedCitation['type']) : null);
             $advancedCitation->setCitation($citation);
             $advancedCitation->setCitationRaw($citation->getRaw());
             if(is_array($parsedCitation)){
