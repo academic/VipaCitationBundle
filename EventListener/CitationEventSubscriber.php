@@ -3,13 +3,11 @@
 namespace OkulBilisim\AdvancedCitationBundle\EventListener;
 
 use Doctrine\ORM\EntityManager;
+use Ojs\CoreBundle\Events\TypeEvent;
+use Ojs\JournalBundle\Event\Article\ArticleEvents;
 use Ojs\JournalBundle\Event\CitationEditEvent;
 use Ojs\JournalBundle\Event\CitationEvents;
-use Ojs\JournalBundle\Event\CitationRawEvent;
-use Ojs\JournalBundle\Event\JournalEvents;
-use Ojs\JournalBundle\Event\SubmissionFormEvent;
 use OkulBilisim\AdvancedCitationBundle\Form\Type\ArticleSubmissionType;
-use OkulBilisim\AdvancedCitationBundle\Helper\AdvancedCitationHelper;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Router;
@@ -41,7 +39,7 @@ class CitationEventSubscriber implements EventSubscriberInterface
     {
         return array(
             CitationEvents::CITATION_EDIT => 'onEditViewRequested',
-            JournalEvents::JOURNAL_SUBMISSION_FORM => 'onSubmissionFormRequested',
+            ArticleEvents::INIT_SUBMIT_FORM => 'onSubmissionFormRequested',
         );
     }
 
@@ -57,7 +55,7 @@ class CitationEventSubscriber implements EventSubscriberInterface
         $editEvent->setResponse(new RedirectResponse($url, 302));
     }
 
-    public function onSubmissionFormRequested(SubmissionFormEvent $event)
+    public function onSubmissionFormRequested(TypeEvent $event)
     {
         $event->setType(new ArticleSubmissionType($this->manager));
     }
