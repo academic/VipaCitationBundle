@@ -3,6 +3,7 @@
 namespace OkulBilisim\AdvancedCitationBundle\Form\Type;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Ojs\JournalBundle\Entity\Journal;
 use Ojs\JournalBundle\Entity\SubjectRepository;
 use Ojs\JournalBundle\Form\Type\ArticleAuthorType;
 use Ojs\JournalBundle\Form\Type\ArticleFileType;
@@ -69,9 +70,7 @@ class ArticleSubmissionType extends AbstractType
                     'attr' => [
                         'style' => 'height: 100px'
                     ],
-                    'query_builder' => function(SubjectRepository $er) {
-                        return $er->getChildrenQueryBuilder(null, null, 'root', 'asc', false);
-                    }
+                    'choices' => $options['journal']->getSubjects(),
                 )
             )
             ->add('citations', 'collection', array(
@@ -112,6 +111,7 @@ class ArticleSubmissionType extends AbstractType
             array(
                 'locales' => [],
                 'default_locale' => '',
+                'journal' => new Journal(),
                 'validation_groups' => false,
                 'cascade_validation' => true,
                 'data_class' => 'Ojs\JournalBundle\Entity\Article',
