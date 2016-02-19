@@ -66,7 +66,7 @@ class ArticleSubmissionType extends AbstractType
                     'multiple' => true,
                     'required' => true,
                     'property' => 'indentedSubject',
-                    'label' => 'journal.subjects',
+                    'label' => 'subjects',
                     'attr' => [
                         'style' => 'height: 100px'
                     ],
