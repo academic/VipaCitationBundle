@@ -1,2 +1,3 @@
 parse.citations: 'Parse Citations'
 loading: 'Loading'
+enter.max.10.citation: 'Please enter max. 10 citation for each parse process.'

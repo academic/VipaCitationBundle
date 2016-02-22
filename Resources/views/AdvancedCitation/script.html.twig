@@ -3,6 +3,14 @@
     $('#parse-citations-button').on('click', function(){
         $(this).removeClass('btn-primary').addClass('btn-warning').html('{{ 'loading'|trans }}...').prop('disabled', true);
         var rawCitations = $('#raw-citations').val();
+        var lines = rawCitations.split("\n").filter(function(value){
+            return value !== "";
+        });
+        if(lines.length > 10){
+            alert("{{ 'enter.max.10.citation'|trans }}");
+            $('#parse-citations-button').removeClass('btn-warning').addClass('btn-primary').html('{{ 'parse.citations'|trans }}').prop('disabled', false);
+            return;
+        }
         var subformCount = $('#parse-citations-button').parent().parent().parent().find('.submission-subform').length;
         $('#raw-citations').val('');
         $.ajax({
