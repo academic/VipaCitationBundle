@@ -74,7 +74,7 @@ class AdvancedCitationController extends OjsController
             ->findOneBy(['citation' => $id]);
 
         if (!$entity) {
-            $entity = $this->setupAdvancedCitation($id);
+            throw $this->createNotFoundException('Unable to find AdvancedCitation entity.');
         }
 
         $editForm = $this->createEditForm($entity, $articleId);
