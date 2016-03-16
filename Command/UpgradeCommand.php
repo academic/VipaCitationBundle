@@ -56,7 +56,7 @@ class UpgradeCommand extends ContainerAwareCommand
 
             if (!$advancedCitation || $all) {
                 $output->writeln('Upgrading citation #' . $citation->getId());
-                $prepareAdvancedCitation = AdvancedCitationHelper::prepareAdvancedCitation($citation, $advancedCitation);
+                $prepareAdvancedCitation = AdvancedCitationHelper::prepareAdvancedCitation($citation, null);
                 $em->persist($prepareAdvancedCitation);
 
                 if ($index % 10 == 0) {

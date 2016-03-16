@@ -57,7 +57,7 @@ class AdvancedCitationHelper
                 $parsedCitation['type'] = $citation->getType();
             }
 
-            if (is_null($advancedCitation)) {
+            if ($advancedCitation == null) {
                 $advancedCitation = new AdvancedCitation();
             }
 

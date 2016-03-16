@@ -36,8 +36,8 @@ class AdvancedCitationController extends OjsController
             ->getRepository('AdvancedCitationBundle:AdvancedCitation')
             ->findOneBy(['citation' => $id]);
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find AdvancedCitation entity.');
+        if(!$entity){
+            $entity = $this->setupAdvancedCitation($id);
         }
 
         $editForm = $this->createEditForm($entity, $articleId);
@@ -74,7 +74,7 @@ class AdvancedCitationController extends OjsController
             ->findOneBy(['citation' => $id]);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find AdvancedCitation entity.');
+            $entity = $this->setupAdvancedCitation($id);
         }
 
         $editForm = $this->createEditForm($entity, $articleId);
@@ -146,5 +146,19 @@ class AdvancedCitationController extends OjsController
                 'dummyItemCount' => $dummyItemCount
             ]
         );
+    }
+
+    /**
+     * @param $citationId
+     * @return AdvancedCitation
+     */
+    private function setupAdvancedCitation($citationId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $citation = $em->getRepository('OjsJournalBundle:Citation')->find($citationId);
+        $prepareAdvancedCitation = AdvancedCitationHelper::prepareAdvancedCitation($citation, null);
+        $em->persist($prepareAdvancedCitation);
+        $em->flush();
+        return $prepareAdvancedCitation;
     }
 }
