@@ -1,0 +1,16 @@
+{
+  "name": "AdvancedCitation",
+  "description": "OJS Advanced Citation Bundle",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://bitbucket.org/bulutyazilim/advancedcitationbundle.git"
+    }
+  ],
+  "require": {
+    "bulutyazilim/advanced-citation-bundle": "~0.2"
+  },
+  "extra": {
+    "bundle-class": "BulutYazilim\\AdvancedCitationBundle\\AdvancedCitationBundle"
+  }
+}

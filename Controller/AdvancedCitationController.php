@@ -1,14 +1,14 @@
 <?php
 
-namespace OkulBilisim\AdvancedCitationBundle\Controller;
+namespace BulutYazilim\AdvancedCitationBundle\Controller;
 
 use Ojs\CoreBundle\Controller\OjsController;
 use Ojs\JournalBundle\Entity\Article;
 use Ojs\JournalBundle\Entity\Citation;
-use OkulBilisim\AdvancedCitationBundle\Entity\AdvancedCitation;
-use OkulBilisim\AdvancedCitationBundle\Form\Type\AdvancedCitationType;
-use OkulBilisim\AdvancedCitationBundle\Form\Type\ArticleSubmissionType;
-use OkulBilisim\AdvancedCitationBundle\Helper\AdvancedCitationHelper;
+use BulutYazilim\AdvancedCitationBundle\Entity\AdvancedCitation;
+use BulutYazilim\AdvancedCitationBundle\Form\Type\AdvancedCitationType;
+use BulutYazilim\AdvancedCitationBundle\Form\Type\ArticleSubmissionType;
+use BulutYazilim\AdvancedCitationBundle\Helper\AdvancedCitationHelper;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -83,7 +83,7 @@ class AdvancedCitationController extends OjsController
         if ($editForm->isValid()) {
             $em->flush();
             $params = array('id' => $id, 'journalId' => $journal->getId(), 'articleId' => $articleId);
-            $url = $this->generateUrl('okulbilisim_advancedcitation_edit', $params);
+            $url = $this->generateUrl('bulutyazilim_advancedcitation_edit', $params);
             return $this->redirect($url);
         }
 
@@ -109,7 +109,7 @@ class AdvancedCitationController extends OjsController
         $id = $entity->getCitation()->getId();
         $journal = $this->get('ojs.journal_service')->getSelectedJournal();
         $params = array('id' => $id, 'journalId' => $journal->getId(), 'articleId' => $articleId);
-        $action = $this->generateUrl('okulbilisim_advancedcitation_update', $params);
+        $action = $this->generateUrl('bulutyazilim_advancedcitation_update', $params);
 
         $form = $this->createForm(
             new AdvancedCitationType(),

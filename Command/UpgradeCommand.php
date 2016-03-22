@@ -1,10 +1,8 @@
 <?php
 
-namespace OkulBilisim\AdvancedCitationBundle\Command;
+namespace BulutYazilim\AdvancedCitationBundle\Command;
 
-use Doctrine\ORM\EntityManager;
-use OkulBilisim\AdvancedCitationBundle\Entity\AdvancedCitation;
-use OkulBilisim\AdvancedCitationBundle\Helper\AdvancedCitationHelper;
+use BulutYazilim\AdvancedCitationBundle\Helper\AdvancedCitationHelper;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -43,7 +41,6 @@ class UpgradeCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $all = $input->getOption('all');
-        /** @var EntityManager $em */
         $em = $this->getContainer()->get('doctrine.orm.entity_manager');
         $citations = $em->getRepository('OjsJournalBundle:Citation')->findAll();
 

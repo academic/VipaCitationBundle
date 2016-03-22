@@ -1,13 +1,13 @@
 <?php
 
-namespace OkulBilisim\AdvancedCitationBundle\EventListener;
+namespace BulutYazilim\AdvancedCitationBundle\EventListener;
 
 use Doctrine\ORM\EntityManager;
 use Ojs\CoreBundle\Events\TypeEvent;
 use Ojs\JournalBundle\Event\Article\ArticleEvents;
 use Ojs\JournalBundle\Event\CitationEditEvent;
 use Ojs\JournalBundle\Event\CitationEvents;
-use OkulBilisim\AdvancedCitationBundle\Form\Type\ArticleSubmissionType;
+use BulutYazilim\AdvancedCitationBundle\Form\Type\ArticleSubmissionType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Router;
@@ -51,7 +51,7 @@ class CitationEventSubscriber implements EventSubscriberInterface
             'journalId' => $editEvent->getJournalId()
         ];
 
-        $url = $this->router->generate('okulbilisim_advancedcitation_edit', $parameters);
+        $url = $this->router->generate('bulutyazilim_advancedcitation_edit', $parameters);
         $editEvent->setResponse(new RedirectResponse($url, 302));
     }
 

@@ -1,15 +1,11 @@
 services:
-  advanced_citation.routing_loader:
-    class: OkulBilisim\AdvancedCitationBundle\Routing\AdvancedLoader
-    tags:
-      - { name: routing.loader }
   advanced_citation.citation_subscriber:
-      class: OkulBilisim\AdvancedCitationBundle\EventListener\CitationEventSubscriber
+      class: BulutYazilim\AdvancedCitationBundle\EventListener\CitationEventSubscriber
       arguments: [@router, @doctrine.orm.entity_manager]
       tags:
           - { name: kernel.event_subscriber }
   advanced_citation.twig_subscriber:
-      class: OkulBilisim\AdvancedCitationBundle\EventListener\TwigEventSubscriber
+      class: BulutYazilim\AdvancedCitationBundle\EventListener\TwigEventSubscriber
       arguments: [@doctrine.orm.entity_manager, @twig, %kernel.root_dir%]
       tags:
           - { name: kernel.event_subscriber }

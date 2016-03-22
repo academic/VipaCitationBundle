@@ -1,13 +1,13 @@
-okulbilisim_advancedcitation_edit:
+bulutyazilim_advancedcitation_edit:
     path:     /{journalId}/article/{articleId}/advanced-citation/{id}/edit
     defaults: { _controller: "AdvancedCitationBundle:AdvancedCitation:edit" }
 
-okulbilisim_advancedcitation_update:
+bulutyazilim_advancedcitation_update:
     path:     /{journalId}/article/{articleId}/advanced-citation/{id}/update
     defaults: { _controller: "AdvancedCitationBundle:AdvancedCitation:update" }
     methods:  [PUT]
 
-okulbilisim_advancedcitation_rest_parse:
+bulutyazilim_advancedcitation_rest_parse:
     path:     /citations-to-form/
     defaults: { _controller: "AdvancedCitationBundle:AdvancedCitation:citationsToForm" }
     methods:  [POST]

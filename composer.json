@@ -1,28 +1,28 @@
 {
-  "name" : "okulbilisim/advanced-citation-bundle",
-  "description" : "OJS Advanced Citation Bundle",
-  "type" : "symfony-bundle",
-  "keywords" : [
+  "name": "bulutyazilim/advanced-citation-bundle",
+  "description": "OJS Advanced Citation Bundle",
+  "type": "ojs-bundle",
+  "keywords": [
     "advanced citation bundle"
   ],
-  "license" : [
+  "license": [
     "MIT"
   ],
-  "require" : {
-    "php": ">=5.4.0",
-    "symfony/symfony": "~2.7",
-    "twig/extensions": "1.2.*",
-    "guzzlehttp/guzzle": "^6.1"
+  "require": {
+    "php": ">=5.5.9",
+    "symfony/symfony": "~2.8|~3.0",
+    "twig/extensions": "~1.3",
+    "guzzlehttp/guzzle": "~6.2",
+    "doctrine/orm": "~2.5"
   },
-  "autoload" : {
-    "psr-4" : {
-      "OkulBilisim\\AdvancedCitationBundle\\" : ""
+  "autoload": {
+    "psr-4": {
+      "BulutYazilim\\AdvancedCitationBundle\\": ""
     }
   },
-  "extra" : {
-  "branch-alias" :
-    {
-      "dev-master" : "0.0.1-dev"
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.2-dev"
     }
   }
 }

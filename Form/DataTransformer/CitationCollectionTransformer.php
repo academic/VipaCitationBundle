@@ -1,12 +1,12 @@
 <?php
 
-namespace OkulBilisim\AdvancedCitationBundle\Form\DataTransformer;
+namespace BulutYazilim\AdvancedCitationBundle\Form\DataTransformer;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ojs\JournalBundle\Entity\Citation;
-use OkulBilisim\AdvancedCitationBundle\Entity\AdvancedCitation;
-use OkulBilisim\AdvancedCitationBundle\Helper\AdvancedCitationHelper;
+use BulutYazilim\AdvancedCitationBundle\Entity\AdvancedCitation;
+use BulutYazilim\AdvancedCitationBundle\Helper\AdvancedCitationHelper;
 use Symfony\Component\Form\DataTransformerInterface;
 
 class CitationCollectionTransformer implements DataTransformerInterface

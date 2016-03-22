@@ -1,6 +1,6 @@
 <?php
 
-namespace OkulBilisim\AdvancedCitationBundle\Form\Type;
+namespace BulutYazilim\AdvancedCitationBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -259,7 +259,7 @@ class AdvancedCitationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $defaults = [
-            'data_class' => 'OkulBilisim\AdvancedCitationBundle\Entity\AdvancedCitation',
+            'data_class' => 'BulutYazilim\AdvancedCitationBundle\Entity\AdvancedCitation',
             'attr' => [
                 'novalidate' => 'novalidate',
                 'class' => 'form-validate',
@@ -276,6 +276,6 @@ class AdvancedCitationType extends AbstractType
      */
     public function getName()
     {
-        return 'okulbilisim_advancedcitation_type';
+        return 'bulutyazilim_advancedcitation_type';
     }
 }
