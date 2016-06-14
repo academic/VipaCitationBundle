@@ -3,6 +3,7 @@
 namespace BulutYazilim\AdvancedCitationBundle\Form\Type;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Ojs\CoreBundle\Form\Type\JournalBasedTranslationsType;
 use Ojs\JournalBundle\Entity\Journal;
 use Ojs\JournalBundle\Entity\SubjectRepository;
 use Ojs\JournalBundle\Form\Type\ArticleAuthorType;
@@ -28,19 +29,13 @@ class ArticleSubmissionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add(
-                'articleType',
-                'entity',
-                array(
+            ->add('articleType', 'entity', array(
                     'label' => 'article.type',
                     'class' => 'Ojs\JournalBundle\Entity\ArticleTypes',
                     'required' => false
                 )
             )
-            ->add('translations', 'a2lix_translations',[
-                'locales' => $options['locales'],
-                'default_locale' => $options['default_locale'],
-                'required_locales' => [$options['default_locale']],
+            ->add('translations', JournalBasedTranslationsType::class,[
                 'fields' => [
                     'title' => [
                         'field_type' => 'text'
@@ -84,9 +79,6 @@ class ArticleSubmissionType extends AbstractType
                     'type' => new ArticleFileType(),
                     'allow_add' => true,
                     'allow_delete' => true,
-                    'options' => array(
-                        'locales' => $options['locales']
-                    ),
                     'label' => 'article.files'
                 )
             )
