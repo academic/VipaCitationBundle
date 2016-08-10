@@ -8,6 +8,7 @@ use Ojs\JournalBundle\Event\Article\ArticleEvents;
 use Ojs\JournalBundle\Event\CitationEditEvent;
 use Ojs\JournalBundle\Event\CitationEvents;
 use BulutYazilim\AdvancedCitationBundle\Form\Type\ArticleSubmissionType;
+use Ojs\JournalBundle\Event\CitationNewEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Router;
@@ -38,9 +39,21 @@ class CitationEventSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
+            CitationEvents::CITATION_NEW => 'onNewViewRequested',
             CitationEvents::CITATION_EDIT => 'onEditViewRequested',
             ArticleEvents::INIT_SUBMIT_FORM => 'onSubmissionFormRequested',
         );
+    }
+
+    public function onNewViewRequested(CitationNewEvent $editEvent)
+    {
+        $parameters = [
+            'articleId' => $editEvent->getArticleId(),
+            'journalId' => $editEvent->getJournalId()
+        ];
+
+        $url = $this->router->generate('bulutyazilim_advancedcitation_new', $parameters);
+        $editEvent->setResponse(new RedirectResponse($url, 302));
     }
 
     public function onEditViewRequested(CitationEditEvent $editEvent)

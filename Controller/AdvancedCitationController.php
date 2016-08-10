@@ -2,13 +2,13 @@
 
 namespace BulutYazilim\AdvancedCitationBundle\Controller;
 
-use Ojs\CoreBundle\Controller\OjsController;
-use Ojs\JournalBundle\Entity\Article;
-use Ojs\JournalBundle\Entity\Citation;
 use BulutYazilim\AdvancedCitationBundle\Entity\AdvancedCitation;
 use BulutYazilim\AdvancedCitationBundle\Form\Type\AdvancedCitationType;
 use BulutYazilim\AdvancedCitationBundle\Form\Type\ArticleSubmissionType;
 use BulutYazilim\AdvancedCitationBundle\Helper\AdvancedCitationHelper;
+use Ojs\CoreBundle\Controller\OjsController;
+use Ojs\JournalBundle\Entity\Article;
+use Ojs\JournalBundle\Entity\Citation;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,6 +17,111 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class AdvancedCitationController extends OjsController
 {
+    /**
+     * Displays a form to create a new AdvancedCitation entity.
+     * @param int $articleId
+     * @return Response
+     */
+    public function newAction($articleId)
+    {
+        $journal = $this->get('ojs.journal_service')->getSelectedJournal();
+        $this->throw404IfNotFound($journal);
+
+        if (!$this->isGranted('EDIT', $journal, 'articles')) {
+            throw new AccessDeniedException("You not authorized for this page!");
+        }
+
+        $entity = new AdvancedCitation();
+        $form = $this->createCreateForm($entity, $articleId);
+
+        $data = [
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        ];
+
+        return $this->render('OjsJournalBundle:Citation:new.html.twig', $data);
+    }
+
+    /**
+     * Creates a new AdvancedCitation entity.
+     * @param Request $request
+     * @param Integer $articleId
+     * @return Response
+     */
+    public function createAction(Request $request, $articleId)
+    {
+        /** @var Article $article */
+        $journal = $this->get('ojs.journal_service')->getSelectedJournal();
+        $article = $this->getDoctrine()->getRepository('OjsJournalBundle:Article')->find($articleId);
+
+        $this->throw404IfNotFound($journal);
+        $this->throw404IfNotFound($article);
+
+        if (!$this->isGranted('EDIT', $journal, 'articles')) {
+            throw new AccessDeniedException("You not authorized for this page!");
+        }
+
+        $entity = new AdvancedCitation();
+        $form = $this->createCreateForm($entity, $articleId);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $citation = new Citation();
+
+            $raw = empty($entity->getCitationRaw())
+                ? strval($entity)
+                : $entity->getCitationRaw();
+
+            $citation->setRaw($raw);
+            $citation->setType($entity->getType());
+
+            $article->getCitations()->add($citation);
+            $entity->setCitation($citation);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($citation);
+            $em->persist($entity);
+            $em->persist($article);
+            $em->flush();
+
+            $parameters = ['id' => $citation->getId(), 'journalId' => $journal->getId(), 'articleId' => $articleId];
+            return $this->redirect($this->generateUrl('ojs_journal_citation_show', $parameters));
+        }
+
+        $data = [
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        ];
+
+        return $this->render('OjsJournalBundle:Citation:new.html.twig', $data);
+    }
+
+    /**
+     * Creates a form to create a Citation entity.
+     *
+     * @param AdvancedCitation $entity The entity
+     * @param Integer $articleId
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCreateForm(AdvancedCitation $entity, $articleId)
+    {
+        $journal = $this->get('ojs.journal_service')->getSelectedJournal();
+
+        $parameters = ['journalId' => $journal->getId(), 'articleId' => $articleId];
+        $action = $this->generateUrl('bulutyazilim_advancedcitation_create', $parameters);
+
+        $options = [
+            'action' => $action,
+            'method' => 'POST',
+        ];
+
+        $form = $this->createForm(new AdvancedCitationType(), $entity, $options);
+        $form->add('submit', 'submit', ['label' => 'Create']);
+
+        return $form;
+    }
+
     /**
      * @param int $id
      * @param int $articleId
