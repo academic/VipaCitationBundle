@@ -70,6 +70,9 @@ class AdvancedCitationHelper
                     if($accessor->isWritable($advancedCitation, $citationField)){
                         $accessor->setValue($advancedCitation, $citationField, $handleField);
                     }
+                    if($citationField == 'date' && !in_array('year', $parsedCitation)){
+                        $accessor->setValue($advancedCitation, 'year', $handleField);
+                    }
                 }
             }
 
