@@ -55,6 +55,7 @@ class TwigEventSubscriber implements EventSubscriberInterface
             TwigEvents::OJS_SUBMISSION_CITATION_VIEW => 'onCitationView',
             TwigEvents::OJS_SUBMISSION_CITATION_FORM_EXTRA => 'onCitationFormExtrasRequested',
             TwigEvents::OJS_NEW_ARTICLE_SUBMISSIN_SCRIPT => 'onNewArticleSubmissionScript',
+            TwigEvents::OJS_JOURNAL_ARTICLE_EVENT_FORM => 'onJournalArticleEventForm',
         );
     }
 
@@ -104,6 +105,18 @@ class TwigEventSubscriber implements EventSubscriberInterface
             'AdvancedCitationBundle:AdvancedCitation:script.html.twig',
             [
                 'bibliographyParams' => json_encode($bibliographyParams)
+            ]
+        );
+
+        $event->setTemplate($template);
+    }
+    public function onJournalArticleEventForm(TwigEvent $event)
+    {
+        $template = $this->twig->render(
+            'AdvancedCitationBundle:ArticleSubmission:form.html.twig',
+            [
+                'form' => $event->getOptions()['form'],
+                'dispatch' => $event->getOptions()['dispatch']
             ]
         );
 
