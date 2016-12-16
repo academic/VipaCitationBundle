@@ -35,7 +35,7 @@ class AdvancedCitationHelper
     public static function prepareAdvancedCitation(Citation $citation, AdvancedCitation $advancedCitation = null)
     {
         $accessor = PropertyAccess::createPropertyAccessor();
-        $client = new Client(['base_uri' => 'http://parser.dergipark.gov.tr']);
+        $client = new Client(['base_uri' => 'http://parser.academic.io']);
         $response = $client->request('GET', '/', ['query' => ['q' => $citation->getRaw()]]);
 
         if ($response->getStatusCode() == 200) {
