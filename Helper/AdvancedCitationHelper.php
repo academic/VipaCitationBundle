@@ -1,12 +1,12 @@
 <?php
 
-namespace OJS\AdvancedCitationBundle\Helper;
+namespace Ojs\AdvancedCitationBundle\Helper;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use GuzzleHttp\Client;
 use Ojs\JournalBundle\Entity\Article;
 use Ojs\JournalBundle\Entity\Citation;
-use OJS\AdvancedCitationBundle\Entity\AdvancedCitation;
+use Ojs\AdvancedCitationBundle\Entity\AdvancedCitation;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
 class AdvancedCitationHelper
