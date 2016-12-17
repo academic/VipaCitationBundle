@@ -1,6 +1,6 @@
 <?php
 
-namespace BulutYazilim\AdvancedCitationBundle\Entity;
+namespace Ojs\CitationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Ojs\JournalBundle\Entity\Citation;

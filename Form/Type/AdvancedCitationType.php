@@ -1,6 +1,6 @@
 <?php
 
-namespace BulutYazilim\AdvancedCitationBundle\Form\Type;
+namespace Ojs\CitationBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -259,7 +259,7 @@ class AdvancedCitationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $defaults = [
-            'data_class' => 'BulutYazilim\AdvancedCitationBundle\Entity\AdvancedCitation',
+            'data_class' => 'Ojs\CitationBundle\Entity\AdvancedCitation',
             'attr' => [
                 'novalidate' => 'novalidate',
                 'class' => 'form-validate',
@@ -276,6 +276,6 @@ class AdvancedCitationType extends AbstractType
      */
     public function getName()
     {
-        return 'bulutyazilim_advancedcitation_type';
+        return 'ojs_citation_type';
     }
 }

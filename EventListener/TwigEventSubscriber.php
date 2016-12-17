@@ -1,6 +1,6 @@
 <?php
 
-namespace BulutYazilim\AdvancedCitationBundle\EventListener;
+namespace Ojs\CitationBundle\EventListener;
 
 use Doctrine\ORM\EntityManager;
 use Ojs\CoreBundle\Events\TwigEvent;
@@ -69,11 +69,11 @@ class TwigEventSubscriber implements EventSubscriberInterface
             )
         );
         $advancedCitation = $this->em
-            ->getRepository('AdvancedCitationBundle:AdvancedCitation')
+            ->getRepository('OjsCitationBundle:AdvancedCitation')
             ->findOneBy(['citation' => $event->getOptions()['citation']]);
 
         $template = $this->twig->render(
-            'AdvancedCitationBundle:AdvancedCitation:table.html.twig',
+            'OjsCitationBundle:Citation:table.html.twig',
             [
                 'advancedCitation' => $advancedCitation,
                 'citationParams' => $citationParams
@@ -86,7 +86,7 @@ class TwigEventSubscriber implements EventSubscriberInterface
     public function onCitationFormExtrasRequested(TwigEvent $event)
     {
         $template = $this->twig->render(
-            'AdvancedCitationBundle:AdvancedCitation:raw.html.twig'
+            'OjsCitationBundle:Citation:raw.html.twig'
         );
 
         $event->setTemplate($template);
@@ -102,7 +102,7 @@ class TwigEventSubscriber implements EventSubscriberInterface
             )
         );
         $template = $this->twig->render(
-            'AdvancedCitationBundle:AdvancedCitation:script.html.twig',
+            'OjsCitationBundle:Citation:script.html.twig',
             [
                 'bibliographyParams' => json_encode($bibliographyParams)
             ]
@@ -113,7 +113,7 @@ class TwigEventSubscriber implements EventSubscriberInterface
     public function onJournalArticleEventForm(TwigEvent $event)
     {
         $template = $this->twig->render(
-            'AdvancedCitationBundle:ArticleSubmission:form.html.twig',
+            'CitationBundle:ArticleSubmission:form.html.twig',
             [
                 'form' => $event->getOptions()['form'],
                 'dispatch' => $event->getOptions()['dispatch']
