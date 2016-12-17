@@ -1,11 +1,11 @@
 <?php
 
-namespace Ojs\AdvancedCitationBundle\Controller;
+namespace Ojs\CitationBundle\Controller;
 
-use Ojs\AdvancedCitationBundle\Entity\AdvancedCitation;
-use Ojs\AdvancedCitationBundle\Form\Type\AdvancedCitationType;
-use Ojs\AdvancedCitationBundle\Form\Type\ArticleSubmissionType;
-use Ojs\AdvancedCitationBundle\Helper\AdvancedCitationHelper;
+use Ojs\CitationBundle\Entity\AdvancedCitation;
+use Ojs\CitationBundle\Form\Type\AdvancedCitationType;
+use Ojs\CitationBundle\Form\Type\ArticleSubmissionType;
+use Ojs\CitationBundle\Helper\AdvancedCitationHelper;
 use Ojs\CoreBundle\Controller\OjsController;
 use Ojs\JournalBundle\Entity\Article;
 use Ojs\JournalBundle\Entity\Citation;
@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
-class AdvancedCitationController extends OjsController
+class CitationController extends OjsController
 {
     /**
      * Displays a form to create a new AdvancedCitation entity.
@@ -109,7 +109,7 @@ class AdvancedCitationController extends OjsController
         $journal = $this->get('ojs.journal_service')->getSelectedJournal();
 
         $parameters = ['journalId' => $journal->getId(), 'articleId' => $articleId];
-        $action = $this->generateUrl('ojs_advancedcitation_create', $parameters);
+        $action = $this->generateUrl('ojs_citation_create', $parameters);
 
         $options = [
             'action' => $action,
@@ -138,7 +138,7 @@ class AdvancedCitationController extends OjsController
 
         $em = $this->getDoctrine()->getManager();
         $entity = $em
-            ->getRepository('AdvancedCitationBundle:AdvancedCitation')
+            ->getRepository('OjsCitationBundle:AdvancedCitation')
             ->findOneBy(['citation' => $id]);
 
         if(!$entity){
@@ -175,7 +175,7 @@ class AdvancedCitationController extends OjsController
 
         $em = $this->getDoctrine()->getManager();
         $entity = $em
-            ->getRepository('AdvancedCitationBundle:AdvancedCitation')
+            ->getRepository('OjsCitationBundle:AdvancedCitation')
             ->findOneBy(['citation' => $id]);
 
         if (!$entity) {
@@ -188,7 +188,7 @@ class AdvancedCitationController extends OjsController
         if ($editForm->isValid()) {
             $em->flush();
             $params = array('id' => $id, 'journalId' => $journal->getId(), 'articleId' => $articleId);
-            $url = $this->generateUrl('ojs_advancedcitation_edit', $params);
+            $url = $this->generateUrl('ojs_citation_edit', $params);
             return $this->redirect($url);
         }
 
@@ -214,7 +214,7 @@ class AdvancedCitationController extends OjsController
         $id = $entity->getCitation()->getId();
         $journal = $this->get('ojs.journal_service')->getSelectedJournal();
         $params = array('id' => $id, 'journalId' => $journal->getId(), 'articleId' => $articleId);
-        $action = $this->generateUrl('ojs_advancedcitation_update', $params);
+        $action = $this->generateUrl('ojs_citation_update', $params);
 
         $form = $this->createForm(
             new AdvancedCitationType(),
@@ -245,7 +245,7 @@ class AdvancedCitationController extends OjsController
             $article
         );
         return $this->render(
-            'AdvancedCitationBundle:AdvancedCitation:advanced_citations_form.html.twig',
+            'OjsCitationBundle:Citation:advanced_citations_form.html.twig',
             [
                 'form' => $form->createView(),
                 'dummyItemCount' => $dummyItemCount

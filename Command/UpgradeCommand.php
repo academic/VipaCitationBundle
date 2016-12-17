@@ -1,8 +1,8 @@
 <?php
 
-namespace Ojs\AdvancedCitationBundle\Command;
+namespace Ojs\CitationBundle\Command;
 
-use Ojs\AdvancedCitationBundle\Helper\AdvancedCitationHelper;
+use Ojs\CitationBundle\Helper\AdvancedCitationHelper;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -48,7 +48,7 @@ class UpgradeCommand extends ContainerAwareCommand
 
         foreach ($citations as $citation) {
             $advancedCitation = $em
-                ->getRepository('AdvancedCitationBundle:AdvancedCitation')
+                ->getRepository('OjsCitationBundle:AdvancedCitation')
                 ->findOneBy(['citation' => $citation]);
 
             if (!$advancedCitation || $all) {

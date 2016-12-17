@@ -1,9 +1,9 @@
 {
-  "name": "ojs/advanced-citation-bundle",
+  "name": "ojs/citation-bundle",
   "description": "OJS Advanced Citation Bundle",
   "type": "ojs-bundle",
   "keywords": [
-    "advanced citation bundle"
+    "citation bundle"
   ],
   "license": [
     "MIT"
@@ -17,7 +17,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Ojs\\AdvancedCitationBundle\\": ""
+      "Ojs\\CitationBundle\\": ""
     }
   },
   "extra": {

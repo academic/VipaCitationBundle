@@ -1,22 +1,22 @@
-ojs_advancedcitation_new:
+ojs_citation_new:
     path:     /{journalId}/article/{articleId}/advanced-citation/new
-    defaults: { _controller: "AdvancedCitationBundle:AdvancedCitation:new" }
+    defaults: { _controller: "OjsCitationBundle:Citation:new" }
 
-ojs_advancedcitation_create:
+ojs_citation_create:
     path:     /{journalId}/article/{articleId}/advanced-citation/create
-    defaults: { _controller: "AdvancedCitationBundle:AdvancedCitation:create" }
+    defaults: { _controller: "OjsCitationBundle:Citation:create" }
     methods:  [POST]
 
-ojs_advancedcitation_edit:
+ojs_citation_edit:
     path:     /{journalId}/article/{articleId}/advanced-citation/{id}/edit
-    defaults: { _controller: "AdvancedCitationBundle:AdvancedCitation:edit" }
+    defaults: { _controller: "OjsCitationBundle:Citation:edit" }
 
-ojs_advancedcitation_update:
+ojs_citation_update:
     path:     /{journalId}/article/{articleId}/advanced-citation/{id}/update
-    defaults: { _controller: "AdvancedCitationBundle:AdvancedCitation:update" }
+    defaults: { _controller: "OjsCitationBundle:Citation:update" }
     methods:  [PUT]
 
-ojs_advancedcitation_rest_parse:
+ojs_citation_rest_parse:
     path:     /citations-to-form/
-    defaults: { _controller: "AdvancedCitationBundle:AdvancedCitation:citationsToForm" }
+    defaults: { _controller: "OjsCitationBundle:Citation:citationsToForm" }
     methods:  [POST]

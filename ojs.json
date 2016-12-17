@@ -4,13 +4,13 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/ojs/advancedcitationbundle.git"
+      "url": "https://github.com/ojs/citationbundle.git"
     }
   ],
   "require": {
-    "ojs/advanced-citation-bundle": "~0.2"
+    "ojs/citation-bundle": "~0.2"
   },
   "extra": {
-    "bundle-class": "Ojs\\AdvancedCitationBundle\\AdvancedCitationBundle"
+    "bundle-class": "Ojs\\CitationBundle\\OjsCitationBundle"
   }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace OJS\AdvancedCitationBundle\Form\Type;
+namespace Ojs\CitationBundle\Form\Type;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Ojs\CoreBundle\Form\Type\JournalBasedTranslationsType;
@@ -8,7 +8,7 @@ use Ojs\JournalBundle\Entity\Journal;
 use Ojs\JournalBundle\Entity\SubjectRepository;
 use Ojs\JournalBundle\Form\Type\ArticleAuthorType;
 use Ojs\JournalBundle\Form\Type\ArticleFileType;
-use OJS\AdvancedCitationBundle\Form\DataTransformer\CitationCollectionTransformer;
+use Ojs\CitationBundle\Form\DataTransformer\CitationCollectionTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;

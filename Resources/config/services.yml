@@ -1,11 +1,11 @@
 services:
   advanced_citation.citation_subscriber:
-      class: Ojs\AdvancedCitationBundle\EventListener\CitationEventSubscriber
+      class: Ojs\CitationBundle\EventListener\CitationEventSubscriber
       arguments: ["@router", "@doctrine.orm.entity_manager"]
       tags:
           - { name: kernel.event_subscriber }
   advanced_citation.twig_subscriber:
-      class: Ojs\AdvancedCitationBundle\EventListener\TwigEventSubscriber
+      class: Ojs\CitationBundle\EventListener\TwigEventSubscriber
       arguments: ["@doctrine.orm.entity_manager", "@twig", "%kernel.root_dir%"]
       tags:
           - { name: kernel.event_subscriber }
