@@ -1,8 +1,8 @@
 <?php
 
-namespace BulutYazilim\AdvancedCitationBundle\Command;
+namespace Ojs\AdvancedCitationBundle\Command;
 
-use BulutYazilim\AdvancedCitationBundle\Helper\AdvancedCitationHelper;
+use Ojs\AdvancedCitationBundle\Helper\AdvancedCitationHelper;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

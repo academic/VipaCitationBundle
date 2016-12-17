@@ -1,6 +1,6 @@
 <?php
 
-namespace BulutYazilim\AdvancedCitationBundle\EventListener;
+namespace Ojs\AdvancedCitationBundle\EventListener;
 
 use Doctrine\ORM\EntityManager;
 use Ojs\CoreBundle\Events\TwigEvent;

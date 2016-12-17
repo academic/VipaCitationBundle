@@ -1,6 +1,6 @@
 <?php
 
-namespace BulutYazilim\AdvancedCitationBundle\DependencyInjection;
+namespace Ojs\AdvancedCitationBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;

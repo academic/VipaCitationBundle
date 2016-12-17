@@ -14,7 +14,7 @@
         var subformCount = $('#parse-citations-button').parent().parent().parent().find('.submission-subform').length;
         $('#raw-citations').val('');
         $.ajax({
-            url: "{{ path('bulutyazilim_advancedcitation_rest_parse') }}",
+            url: "{{ path('ojs_advancedcitation_rest_parse') }}",
             method: "POST",
             data: {
                 rawCitations: rawCitations,

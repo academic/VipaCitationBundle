@@ -8,9 +8,9 @@
     }
   ],
   "require": {
-    "bulutyazilim/advanced-citation-bundle": "~0.2"
+    "ojs/advanced-citation-bundle": "~0.2"
   },
   "extra": {
-    "bundle-class": "BulutYazilim\\AdvancedCitationBundle\\AdvancedCitationBundle"
+    "bundle-class": "Ojs\\AdvancedCitationBundle\\AdvancedCitationBundle"
   }
 }

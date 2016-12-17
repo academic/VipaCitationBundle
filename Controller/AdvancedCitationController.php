@@ -1,11 +1,11 @@
 <?php
 
-namespace BulutYazilim\AdvancedCitationBundle\Controller;
+namespace Ojs\AdvancedCitationBundle\Controller;
 
-use BulutYazilim\AdvancedCitationBundle\Entity\AdvancedCitation;
-use BulutYazilim\AdvancedCitationBundle\Form\Type\AdvancedCitationType;
-use BulutYazilim\AdvancedCitationBundle\Form\Type\ArticleSubmissionType;
-use BulutYazilim\AdvancedCitationBundle\Helper\AdvancedCitationHelper;
+use Ojs\AdvancedCitationBundle\Entity\AdvancedCitation;
+use Ojs\AdvancedCitationBundle\Form\Type\AdvancedCitationType;
+use Ojs\AdvancedCitationBundle\Form\Type\ArticleSubmissionType;
+use Ojs\AdvancedCitationBundle\Helper\AdvancedCitationHelper;
 use Ojs\CoreBundle\Controller\OjsController;
 use Ojs\JournalBundle\Entity\Article;
 use Ojs\JournalBundle\Entity\Citation;
@@ -109,7 +109,7 @@ class AdvancedCitationController extends OjsController
         $journal = $this->get('ojs.journal_service')->getSelectedJournal();
 
         $parameters = ['journalId' => $journal->getId(), 'articleId' => $articleId];
-        $action = $this->generateUrl('bulutyazilim_advancedcitation_create', $parameters);
+        $action = $this->generateUrl('ojs_advancedcitation_create', $parameters);
 
         $options = [
             'action' => $action,
@@ -188,7 +188,7 @@ class AdvancedCitationController extends OjsController
         if ($editForm->isValid()) {
             $em->flush();
             $params = array('id' => $id, 'journalId' => $journal->getId(), 'articleId' => $articleId);
-            $url = $this->generateUrl('bulutyazilim_advancedcitation_edit', $params);
+            $url = $this->generateUrl('ojs_advancedcitation_edit', $params);
             return $this->redirect($url);
         }
 
@@ -214,7 +214,7 @@ class AdvancedCitationController extends OjsController
         $id = $entity->getCitation()->getId();
         $journal = $this->get('ojs.journal_service')->getSelectedJournal();
         $params = array('id' => $id, 'journalId' => $journal->getId(), 'articleId' => $articleId);
-        $action = $this->generateUrl('bulutyazilim_advancedcitation_update', $params);
+        $action = $this->generateUrl('ojs_advancedcitation_update', $params);
 
         $form = $this->createForm(
             new AdvancedCitationType(),

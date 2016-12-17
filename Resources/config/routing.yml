@@ -1,22 +1,22 @@
-bulutyazilim_advancedcitation_new:
+ojs_advancedcitation_new:
     path:     /{journalId}/article/{articleId}/advanced-citation/new
     defaults: { _controller: "AdvancedCitationBundle:AdvancedCitation:new" }
 
-bulutyazilim_advancedcitation_create:
+ojs_advancedcitation_create:
     path:     /{journalId}/article/{articleId}/advanced-citation/create
     defaults: { _controller: "AdvancedCitationBundle:AdvancedCitation:create" }
     methods:  [POST]
 
-bulutyazilim_advancedcitation_edit:
+ojs_advancedcitation_edit:
     path:     /{journalId}/article/{articleId}/advanced-citation/{id}/edit
     defaults: { _controller: "AdvancedCitationBundle:AdvancedCitation:edit" }
 
-bulutyazilim_advancedcitation_update:
+ojs_advancedcitation_update:
     path:     /{journalId}/article/{articleId}/advanced-citation/{id}/update
     defaults: { _controller: "AdvancedCitationBundle:AdvancedCitation:update" }
     methods:  [PUT]
 
-bulutyazilim_advancedcitation_rest_parse:
+ojs_advancedcitation_rest_parse:
     path:     /citations-to-form/
     defaults: { _controller: "AdvancedCitationBundle:AdvancedCitation:citationsToForm" }
     methods:  [POST]

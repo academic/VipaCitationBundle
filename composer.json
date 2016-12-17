@@ -1,5 +1,5 @@
 {
-  "name": "bulutyazilim/advanced-citation-bundle",
+  "name": "ojs/advanced-citation-bundle",
   "description": "OJS Advanced Citation Bundle",
   "type": "ojs-bundle",
   "keywords": [
@@ -17,7 +17,7 @@
   },
   "autoload": {
     "psr-4": {
-      "BulutYazilim\\AdvancedCitationBundle\\": ""
+      "Ojs\\AdvancedCitationBundle\\": ""
     }
   },
   "extra": {
