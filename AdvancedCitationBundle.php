@@ -1,6 +1,6 @@
 <?php
 
-namespace BulutYazilim\AdvancedCitationBundle;
+namespace Ojs\AdvancedCitationBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
