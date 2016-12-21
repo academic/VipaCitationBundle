@@ -113,7 +113,7 @@ class TwigEventSubscriber implements EventSubscriberInterface
     public function onJournalArticleEventForm(TwigEvent $event)
     {
         $template = $this->twig->render(
-            'CitationBundle:ArticleSubmission:form.html.twig',
+            'OjsCitationBundle:ArticleSubmission:form.html.twig',
             [
                 'form' => $event->getOptions()['form'],
                 'dispatch' => $event->getOptions()['dispatch']
