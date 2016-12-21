@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class AdvancedCitationExtension extends Extension
+class OjsCitationExtension extends Extension
 {
     /**
      * {@inheritdoc}
