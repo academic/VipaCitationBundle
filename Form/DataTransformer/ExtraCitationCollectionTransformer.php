@@ -7,11 +7,10 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Ojs\JournalBundle\Entity\Citation;
 use Ojs\CitationBundle\Entity\AdvancedCitation;
 use Ojs\CitationBundle\Entity\ExtraCitation;
-use Ojs\CitationBundle\Helper\AdvancedCitationHelper;
 use Ojs\CitationBundle\Helper\ExtraCitationHelper;
 use Symfony\Component\Form\DataTransformerInterface;
 
-class CitationCollectionTransformer implements DataTransformerInterface
+class ExtraCitationCollectionTransformer  implements DataTransformerInterface
 {
     private $manager;
 
@@ -29,19 +28,19 @@ class CitationCollectionTransformer implements DataTransformerInterface
         if (null === $citations) {
             return new ArrayCollection();
         }
-
         $collection = new ArrayCollection();
-
         /** @var Citation $citation */
         foreach ($citations as $citation) {
-            $advanced = $this->manager
+          $extra = $this->manager
                 ->getRepository('OjsCitationBundle:AdvancedCitation')
                 ->findOneBy(['citation' => $citation]);
-            if (!$advanced) {
-                $advanced = AdvancedCitationHelper::prepareAdvancedCitation($citation);
+
+            if (!$extra) {
+                $extra = ExtraCitationHelper::prepareExtraCitation($citation);
             }
-            $advanced->setCitationRaw($citation->getRaw());
-            $collection->add($advanced);
+
+            $extra->setCitationRaw($citation->getRaw());
+            $collection->add($extra);
         }
 
         return $collection;

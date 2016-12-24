@@ -20,3 +20,9 @@ ojs_citation_rest_parse:
     path:     /citations-to-form/
     defaults: { _controller: "OjsCitationBundle:Citation:citationsToForm" }
     methods:  [POST]
+
+
+ojs_citation_freecite_parse:
+    path:     /citations-freecite-parse/
+    defaults: { _controller: "OjsCitationBundle:ExtraCitation:parse" }
+    methods:  [POST]

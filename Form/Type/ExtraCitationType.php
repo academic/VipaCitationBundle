@@ -6,40 +6,40 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AdvancedCitationType extends AbstractType
+class ExtraCitationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('type', 'choice', [
-                'required' => true,
-                'choices'   => [
-                    'article' => 'article',
-                    'book' => 'book',
-                    'booklet' => 'booklet',
-                    'conference' => 'conference',
-                    'inbook' => 'inbook',
-                    'incollection' => 'incollection',
-                    'inproceedings' => 'inproceedings',
-                    'manual' => 'manual',
-                    'masterthesis' => 'masterthesis',
-                    'misc' => 'misc',
-                    'phdthesis' => 'phdthesis',
-                    'proceedings' => 'proceedings',
-                    'techreport' => 'techreport',
-                    'unpublished' => 'unpublished',
-                ],
-                'attr' => [
-                    'class' => 'input-sm citation-type',
-                    'data-name' => 'type'
+                    'required' => true,
+                    'choices'   => [
+                        'article' => 'article',
+                        'book' => 'book',
+                        'booklet' => 'booklet',
+                        'conference' => 'conference',
+                        'inbook' => 'inbook',
+                        'incollection' => 'incollection',
+                        'inproceedings' => 'inproceedings',
+                        'manual' => 'manual',
+                        'masterthesis' => 'masterthesis',
+                        'misc' => 'misc',
+                        'phdthesis' => 'phdthesis',
+                        'proceedings' => 'proceedings',
+                        'techreport' => 'techreport',
+                        'unpublished' => 'unpublished',
+                    ],
+                    'attr' => [
+                        'class' => 'input-sm citation-type',
+                        'data-name' => 'type'
                     ]
                 ]
             )
             ->add('author', 'text', [
-                'required' => false,
-                'attr' => [
-                    'class' => 'input-sm',
-                    'data-name' => 'author'
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm',
+                        'data-name' => 'author'
                     ]
                 ]
             )
@@ -64,6 +64,14 @@ class AdvancedCitationType extends AbstractType
                     'attr' => [
                         'class' => 'input-sm',
                         'data-name' => 'pages'
+                    ]
+                ]
+            )
+            ->add('crossref', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm',
+                        'data-name' => 'crosref'
                     ]
                 ]
             )
@@ -120,6 +128,14 @@ class AdvancedCitationType extends AbstractType
                     'attr' => [
                         'class' => 'input-sm',
                         'data-name' => 'chapter'
+                    ]
+                ]
+            )
+            ->add('crossref', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm',
+                        'data-name' => 'crossref'
                     ]
                 ]
             )
@@ -268,6 +284,6 @@ class AdvancedCitationType extends AbstractType
      */
     public function getName()
     {
-        return 'ojs_citation_type';
+        return 'ojs_extra_citation_type';
     }
 }

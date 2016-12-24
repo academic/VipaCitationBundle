@@ -50,7 +50,7 @@ class AdvancedCitationHelper
                 $parsedCitation['author'] = $explodeCitation[0];
                 $parsedCitation['title'] = $explodeCitation[1];
                 $parsedCitation['pages'] = $explodeCitation[2];
-                $parsedCitation['editor'] = $explodeCitation[3];
+                $parsedCitation['editor'] = $explodeCitation[3] ;
                 $parsedCitation['publisher'] = $explodeCitation[4];
                 $parsedCitation['location'] = $explodeCitation[5];
                 $parsedCitation['language'] = $explodeCitation[6];

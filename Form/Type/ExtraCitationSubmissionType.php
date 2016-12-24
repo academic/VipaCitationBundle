@@ -8,12 +8,12 @@ use Ojs\JournalBundle\Entity\Journal;
 use Ojs\JournalBundle\Entity\SubjectRepository;
 use Ojs\JournalBundle\Form\Type\ArticleAuthorType;
 use Ojs\JournalBundle\Form\Type\ArticleFileType;
-use Ojs\CitationBundle\Form\DataTransformer\CitationCollectionTransformer;
+use Ojs\CitationBundle\Form\DataTransformer\ExtraCitationCollectionTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ArticleSubmissionType extends AbstractType
+class ExtraCitationSubmissionType extends AbstractType
 {
     private $manager;
 
@@ -134,7 +134,7 @@ class ArticleSubmissionType extends AbstractType
                 ]
             )
             ->add('citations', 'collection', array(
-                    'type' => new AdvancedCitationType(),
+                    'type' => new ExtraCitationType(),
                     'allow_add' => true,
                     'allow_delete' => true,
                     'label' => 'article.citations'
@@ -154,9 +154,9 @@ class ArticleSubmissionType extends AbstractType
                     'label' => 'article.authors'
                 )
             )
-        ;
 
-        $builder->get('citations')->addModelTransformer(new CitationCollectionTransformer($this->manager));
+        ;
+        $builder->get('citations')->addModelTransformer(new ExtraCitationCollectionTransformer($this->manager));
 
     }
 
@@ -187,6 +187,6 @@ class ArticleSubmissionType extends AbstractType
      */
     public function getName()
     {
-        return 'ojs_article_submission';
+        return 'ojs_extra_citation_article_submission';
     }
 }
