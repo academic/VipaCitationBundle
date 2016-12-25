@@ -122,7 +122,6 @@ class ExtraCitationHelper
         if ($extraCitation == null) {
             $extraCitation = new AdvancedCitation();
         }
-        $parsedCitation['editor'] = "anaammm";
         $extraCitation->setType(!empty($parsedCitation['type']) ? ExtraCitationHelper::handleField($parsedCitation['type']) : null);
         $extraCitation->setCitation($citation);
         $extraCitation->setCitationRaw($citation->getRaw());
