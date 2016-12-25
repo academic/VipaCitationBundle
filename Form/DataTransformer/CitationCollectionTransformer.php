@@ -6,9 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectManager;
 use Ojs\JournalBundle\Entity\Citation;
 use Ojs\CitationBundle\Entity\AdvancedCitation;
-use Ojs\CitationBundle\Entity\ExtraCitation;
 use Ojs\CitationBundle\Helper\AdvancedCitationHelper;
-use Ojs\CitationBundle\Helper\ExtraCitationHelper;
 use Symfony\Component\Form\DataTransformerInterface;
 
 class CitationCollectionTransformer implements DataTransformerInterface

@@ -157,7 +157,6 @@ class ArticleSubmissionType extends AbstractType
         ;
 
         $builder->get('citations')->addModelTransformer(new CitationCollectionTransformer($this->manager));
-
     }
 
     /**

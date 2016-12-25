@@ -123,6 +123,14 @@ class AdvancedCitationType extends AbstractType
                     ]
                 ]
             )
+            ->add('crossref', 'text', [
+                    'required' => false,
+                    'attr' => [
+                                'class' => 'input-sm',
+                                'data-name' => 'crossref'
+                                ]
+                    ]
+            )
             ->add('edition', 'text', [
                     'required' => false,
                     'attr' => [
