@@ -67,7 +67,7 @@ class ExtraCitationHelper
         $p = xml_parser_create();
         xml_parse_into_struct($p, $simple, $vals, $index);
         xml_parser_free($p);
-        var_dump($vals);
+
         foreach($vals as $key => $value)
         {
             if($value["tag"]=="TITLE")
@@ -122,10 +122,11 @@ class ExtraCitationHelper
         if ($extraCitation == null) {
             $extraCitation = new AdvancedCitation();
         }
-
+        $parsedCitation['editor'] = "anaammm";
         $extraCitation->setType(!empty($parsedCitation['type']) ? ExtraCitationHelper::handleField($parsedCitation['type']) : null);
         $extraCitation->setCitation($citation);
         $extraCitation->setCitationRaw($citation->getRaw());
+
         if(is_array($parsedCitation)){
             foreach($parsedCitation as $citationField => $citationFieldValue){
                 $handleField = ExtraCitationHelper::handleField($citationFieldValue);

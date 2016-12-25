@@ -53,7 +53,7 @@ class TwigEventSubscriber implements EventSubscriberInterface
     {
         return array(
             TwigEvents::OJS_SUBMISSION_CITATION_VIEW => 'onCitationView',
-            TwigEvents::OJS_SUBMISSION_CITATION_FORM_EXTRA => 'onCitationFormExtrasRequested', #ojs icerisinde..
+            TwigEvents::OJS_SUBMISSION_CITATION_FORM_EXTRA => 'onCitationFormExtrasRequested',
             TwigEvents::OJS_NEW_ARTICLE_SUBMISSION_SCRIPT => 'onNewArticleSubmissionScript',
             TwigEvents::OJS_JOURNAL_ARTICLE_EVENT_FORM => 'onJournalArticleEventForm',
         );

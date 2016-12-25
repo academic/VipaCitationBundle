@@ -47,7 +47,7 @@ class ExtraCitationCollectionTransformer  implements DataTransformerInterface
     }
 
     /**
-     * @param  AdvancedCitation $advancedCitations
+     * @param  ExtraAdvancedCitation $advancedCitations
      * @return ArrayCollection
      */
     public function reverseTransform($advancedCitations)
@@ -61,6 +61,7 @@ class ExtraCitationCollectionTransformer  implements DataTransformerInterface
         /** @var AdvancedCitation $advancedCitation */
         foreach ($advancedCitations as $advancedCitation) {
             $citation = $advancedCitation->getCitation();
+
             if(is_null($citation)){
                 $citation = new Citation();
                 $advancedCitation->setCitation($citation);
