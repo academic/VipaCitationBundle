@@ -1,4 +1,9 @@
 services:
+  extra_citation.extra_citation_subscriber:
+        class: Ojs\CitationBundle\EventListener\ExtraCitationEventSubscriber
+        arguments: ["@router", "@doctrine.orm.entity_manager"]
+        tags:
+            - { name: kernel.event_subscriber }
   advanced_citation.citation_subscriber:
       class: Ojs\CitationBundle\EventListener\CitationEventSubscriber
       arguments: ["@router", "@doctrine.orm.entity_manager"]

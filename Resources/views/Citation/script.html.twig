@@ -25,6 +25,34 @@
                 $('#citation-forms-container').append(result);
             }});
     });
+
+    $('#parse-extra-citations-button').on('click', function(){
+        $(this).removeClass('btn-primary').addClass('btn-warning').html('{{ 'loading'|trans }}...').prop('disabled', true);
+        var rawCitations = $('#raw-citations').val();
+        var lines = rawCitations.split("\n").filter(function(value){
+            return value !== "";
+        });
+
+        if(lines.length > 10){
+            alert("{{ 'enter.max.10.citation'|trans }}");
+            $('#parse-extra-citations-button').removeClass('btn-warning').addClass('btn-primary').html('{{ 'parse.extra.citations'|trans }}').prop('disabled', false);
+            return;
+        }
+        var subformCount = $('#parse-extra-citations-button').parent().parent().parent().find('.submission-subform').length;
+        $('#raw-citations').val('');
+        $.ajax({
+            url: "{{ path('ojs_citation_freecite_parse') }}",
+            method: "POST",
+            data: {
+                rawCitations: rawCitations,
+                itemCount: subformCount
+            },
+            success: function(result){
+                $('#parse-extra-citations-button').removeClass('btn-warning').addClass('btn-primary').html('{{ 'parse.extra.citations'|trans }}').prop('disabled', false);
+                $('#citation-forms-container').append(result);
+            }});
+    });
+
     function reviseAdvancedCitationFormInputs(){
         $.each($('#citation-forms-container').find('.submission-subform'), function (index, value) {
             var currentSubform = $(this);

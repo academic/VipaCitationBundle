@@ -6,17 +6,10 @@ env:
 php:
   - 7.0
 
-addons:
-  apt_packages:
-    - parallel
-
-services:
-  - mysql
-  - postgresql
-  - elasticsearch
-  - memcached
-
 sudo: false
 
-before_install:
-  - npm install -g bower
+before_script:
+    - phpenv config-add travis.php.ini
+
+script:
+    - phpunit Tests/Controller/ExtraCitationControllerTest.php

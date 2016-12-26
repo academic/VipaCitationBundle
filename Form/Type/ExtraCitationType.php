@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AdvancedCitationType extends AbstractType
+class ExtraCitationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -64,6 +64,14 @@ class AdvancedCitationType extends AbstractType
                     'attr' => [
                         'class' => 'input-sm',
                         'data-name' => 'pages'
+                    ]
+                ]
+            )
+            ->add('crossref', 'text', [
+                    'required' => false,
+                    'attr' => [
+                        'class' => 'input-sm',
+                        'data-name' => 'crosref'
                     ]
                 ]
             )
@@ -276,6 +284,6 @@ class AdvancedCitationType extends AbstractType
      */
     public function getName()
     {
-        return 'ojs_citation_type';
+        return 'ojs_extra_citation_type';
     }
 }

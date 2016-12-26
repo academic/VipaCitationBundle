@@ -1,3 +1,4 @@
 parse.citations: 'Referansları Ayır'
+parse.extra.citations: 'Ekstra Referansları Ayır'
 loading: 'Yükleniyor'
 enter.max.10.citation: 'Lütfen her parçalama işlemi için max. 10 referans girin.'
