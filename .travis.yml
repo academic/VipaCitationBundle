@@ -1,0 +1,15 @@
+language: php
+
+env:
+  - SYMFONY_VERSION="2.8.*" DB="postgres" SYMFONY_ENV="test"
+
+php:
+  - 7.0
+
+sudo: false
+
+before_script:
+    - phpenv config-add travis.php.ini
+
+script:
+    - phpunit Tests/Controller/ExtraCitationControllerTest.php

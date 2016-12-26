@@ -7,6 +7,7 @@ use Ojs\JournalBundle\Entity\Article;
 use Ojs\JournalBundle\Entity\Citation;
 use Ojs\CitationBundle\Entity\AdvancedCitation;
 use Symfony\Component\PropertyAccess\PropertyAccess;
+use GuzzleHttp\Client;
 
 class ExtraCitationHelper
 {
@@ -99,8 +100,8 @@ class ExtraCitationHelper
             {
                 $parsedCitation['volume'] = $value["value"];
             }
-
         }
+        $parsedCitation['author'] = substr($parsedCitation['author'],0,sizeof($parsedCitation['author'])-6);
 
         if(isset($doi_urlencode)) {
             $url = "http://api.crossref.org/works?query=" . $doi_urlencode . "&rows=1";
