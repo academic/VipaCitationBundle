@@ -52,10 +52,10 @@ class TwigEventSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            TwigEvents::OJS_SUBMISSION_CITATION_VIEW => 'onCitationView',
-            TwigEvents::OJS_SUBMISSION_CITATION_FORM_EXTRA => 'onCitationFormExtrasRequested',
-            TwigEvents::OJS_NEW_ARTICLE_SUBMISSION_SCRIPT => 'onNewArticleSubmissionScript',
-            TwigEvents::OJS_JOURNAL_ARTICLE_EVENT_FORM => 'onJournalArticleEventForm',
+            TwigEvents::VIPA_SUBMISSION_CITATION_VIEW => 'onCitationView',
+            TwigEvents::VIPA_SUBMISSION_CITATION_FORM_EXTRA => 'onCitationFormExtrasRequested',
+            TwigEvents::VIPA_NEW_ARTICLE_SUBMISSION_SCRIPT => 'onNewArticleSubmissionScript',
+            TwigEvents::VIPA_JOURNAL_ARTICLE_EVENT_FORM => 'onJournalArticleEventForm',
         );
     }
 
