@@ -1,16 +1,16 @@
 services:
   extra_citation.extra_citation_subscriber:
-        class: Ojs\CitationBundle\EventListener\ExtraCitationEventSubscriber
+        class: Vipa\CitationBundle\EventListener\ExtraCitationEventSubscriber
         arguments: ["@router", "@doctrine.orm.entity_manager"]
         tags:
             - { name: kernel.event_subscriber }
   advanced_citation.citation_subscriber:
-      class: Ojs\CitationBundle\EventListener\CitationEventSubscriber
+      class: Vipa\CitationBundle\EventListener\CitationEventSubscriber
       arguments: ["@router", "@doctrine.orm.entity_manager"]
       tags:
           - { name: kernel.event_subscriber }
   advanced_citation.twig_subscriber:
-      class: Ojs\CitationBundle\EventListener\TwigEventSubscriber
+      class: Vipa\CitationBundle\EventListener\TwigEventSubscriber
       arguments: ["@doctrine.orm.entity_manager", "@twig", "%kernel.root_dir%"]
       tags:
           - { name: kernel.event_subscriber }

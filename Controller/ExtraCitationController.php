@@ -6,17 +6,17 @@
  * Time: 23:12
  */
 
-namespace Ojs\CitationBundle\Controller;
+namespace Vipa\CitationBundle\Controller;
 
-use Ojs\CitationBundle\Form\Type\ExtraCitationSubmissionType;
-use Ojs\CitationBundle\Helper\ExtraCitationHelper;
-use Ojs\CoreBundle\Controller\OjsController;
-use Ojs\JournalBundle\Entity\Article;
-use Ojs\JournalBundle\Entity\Citation;
+use Vipa\CitationBundle\Form\Type\ExtraCitationSubmissionType;
+use Vipa\CitationBundle\Helper\ExtraCitationHelper;
+use Vipa\CoreBundle\Controller\VipaController;
+use Vipa\JournalBundle\Entity\Article;
+use Vipa\JournalBundle\Entity\Citation;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class ExtraCitationController extends OjsController
+class ExtraCitationController extends VipaController
 {
     /**
      * Parses citation using Freecite
@@ -38,7 +38,7 @@ class ExtraCitationController extends OjsController
             $article
         );
         return $this->render(
-            'OjsCitationBundle:Citation:advanced_citations_form.html.twig',
+            'VipaCitationBundle:Citation:advanced_citations_form.html.twig',
             [
                 'form' => $form->createView(),
                 'dummyItemCount' => $dummyItemCount

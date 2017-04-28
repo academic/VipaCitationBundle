@@ -1,21 +1,21 @@
 <?php
 
-namespace Ojs\CitationBundle\Controller;
+namespace Vipa\CitationBundle\Controller;
 
-use Ojs\CitationBundle\Entity\AdvancedCitation;
-use Ojs\CitationBundle\Form\Type\AdvancedCitationType;
-use Ojs\CitationBundle\Form\Type\ArticleSubmissionType;
-use Ojs\CitationBundle\Helper\AdvancedCitationHelper;
-use Ojs\CoreBundle\Controller\OjsController;
-use Ojs\JournalBundle\Entity\Article;
-use Ojs\JournalBundle\Entity\Citation;
+use Vipa\CitationBundle\Entity\AdvancedCitation;
+use Vipa\CitationBundle\Form\Type\AdvancedCitationType;
+use Vipa\CitationBundle\Form\Type\ArticleSubmissionType;
+use Vipa\CitationBundle\Helper\AdvancedCitationHelper;
+use Vipa\CoreBundle\Controller\VipaController;
+use Vipa\JournalBundle\Entity\Article;
+use Vipa\JournalBundle\Entity\Citation;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
-class CitationController extends OjsController
+class CitationController extends VipaController
 {
     /**
      * Displays a form to create a new AdvancedCitation entity.
@@ -24,7 +24,7 @@ class CitationController extends OjsController
      */
     public function newAction($articleId)
     {
-        $journal = $this->get('ojs.journal_service')->getSelectedJournal();
+        $journal = $this->get('vipa.journal_service')->getSelectedJournal();
         $this->throw404IfNotFound($journal);
 
         if (!$this->isGranted('EDIT', $journal, 'articles')) {
@@ -39,7 +39,7 @@ class CitationController extends OjsController
             'form'   => $form->createView(),
         ];
 
-        return $this->render('OjsJournalBundle:Citation:new.html.twig', $data);
+        return $this->render('VipaJournalBundle:Citation:new.html.twig', $data);
     }
 
     /**
@@ -51,8 +51,8 @@ class CitationController extends OjsController
     public function createAction(Request $request, $articleId)
     {
         /** @var Article $article */
-        $journal = $this->get('ojs.journal_service')->getSelectedJournal();
-        $article = $this->getDoctrine()->getRepository('OjsJournalBundle:Article')->find($articleId);
+        $journal = $this->get('vipa.journal_service')->getSelectedJournal();
+        $article = $this->getDoctrine()->getRepository('VipaJournalBundle:Article')->find($articleId);
 
         $this->throw404IfNotFound($journal);
         $this->throw404IfNotFound($article);
@@ -85,7 +85,7 @@ class CitationController extends OjsController
             $em->flush();
 
             $parameters = ['id' => $citation->getId(), 'journalId' => $journal->getId(), 'articleId' => $articleId];
-            return $this->redirect($this->generateUrl('ojs_journal_citation_show', $parameters));
+            return $this->redirect($this->generateUrl('vipa_journal_citation_show', $parameters));
         }
 
         $data = [
@@ -93,7 +93,7 @@ class CitationController extends OjsController
             'form'   => $form->createView(),
         ];
 
-        return $this->render('OjsJournalBundle:Citation:new.html.twig', $data);
+        return $this->render('VipaJournalBundle:Citation:new.html.twig', $data);
     }
 
     /**
@@ -106,10 +106,10 @@ class CitationController extends OjsController
      */
     private function createCreateForm(AdvancedCitation $entity, $articleId)
     {
-        $journal = $this->get('ojs.journal_service')->getSelectedJournal();
+        $journal = $this->get('vipa.journal_service')->getSelectedJournal();
 
         $parameters = ['journalId' => $journal->getId(), 'articleId' => $articleId];
-        $action = $this->generateUrl('ojs_citation_create', $parameters);
+        $action = $this->generateUrl('vipa_citation_create', $parameters);
 
         $options = [
             'action' => $action,
@@ -129,7 +129,7 @@ class CitationController extends OjsController
      */
     public function editAction($id, $articleId)
     {
-        $journal = $this->get('ojs.journal_service')->getSelectedJournal();
+        $journal = $this->get('vipa.journal_service')->getSelectedJournal();
         $this->throw404IfNotFound($journal);
 
         if (!$this->isGranted('EDIT', $journal, 'articles')) {
@@ -138,7 +138,7 @@ class CitationController extends OjsController
 
         $em = $this->getDoctrine()->getManager();
         $entity = $em
-            ->getRepository('OjsCitationBundle:AdvancedCitation')
+            ->getRepository('VipaCitationBundle:AdvancedCitation')
             ->findOneBy(['citation' => $id]);
 
         if(!$entity){
@@ -148,7 +148,7 @@ class CitationController extends OjsController
         $editForm = $this->createEditForm($entity, $articleId);
 
         return $this->render(
-            'OjsJournalBundle:Citation:edit.html.twig',
+            'VipaJournalBundle:Citation:edit.html.twig',
             array(
                 'entity' => $entity,
                 'edit_form' => $editForm->createView(),
@@ -166,7 +166,7 @@ class CitationController extends OjsController
      */
     public function updateAction(Request $request, $id, $articleId)
     {
-        $journal = $this->get('ojs.journal_service')->getSelectedJournal();
+        $journal = $this->get('vipa.journal_service')->getSelectedJournal();
         $this->throw404IfNotFound($journal);
 
         if (!$this->isGranted('EDIT', $journal, 'articles')) {
@@ -175,7 +175,7 @@ class CitationController extends OjsController
 
         $em = $this->getDoctrine()->getManager();
         $entity = $em
-            ->getRepository('OjsCitationBundle:AdvancedCitation')
+            ->getRepository('VipaCitationBundle:AdvancedCitation')
             ->findOneBy(['citation' => $id]);
 
         if (!$entity) {
@@ -188,12 +188,12 @@ class CitationController extends OjsController
         if ($editForm->isValid()) {
             $em->flush();
             $params = array('id' => $id, 'journalId' => $journal->getId(), 'articleId' => $articleId);
-            $url = $this->generateUrl('ojs_citation_edit', $params);
+            $url = $this->generateUrl('vipa_citation_edit', $params);
             return $this->redirect($url);
         }
 
         return $this->render(
-            'OjsJournalBundle:Citation:edit.html.twig',
+            'VipaJournalBundle:Citation:edit.html.twig',
             array(
                 'entity' => $entity,
                 'edit_form' => $editForm->createView(),
@@ -212,9 +212,9 @@ class CitationController extends OjsController
     private function createEditForm(AdvancedCitation $entity, $articleId)
     {
         $id = $entity->getCitation()->getId();
-        $journal = $this->get('ojs.journal_service')->getSelectedJournal();
+        $journal = $this->get('vipa.journal_service')->getSelectedJournal();
         $params = array('id' => $id, 'journalId' => $journal->getId(), 'articleId' => $articleId);
-        $action = $this->generateUrl('ojs_citation_update', $params);
+        $action = $this->generateUrl('vipa_citation_update', $params);
 
         $form = $this->createForm(
             new AdvancedCitationType(),
@@ -245,7 +245,7 @@ class CitationController extends OjsController
             $article
         );
         return $this->render(
-            'OjsCitationBundle:Citation:advanced_citations_form.html.twig',
+            'VipaCitationBundle:Citation:advanced_citations_form.html.twig',
             [
                 'form' => $form->createView(),
                 'dummyItemCount' => $dummyItemCount
@@ -260,7 +260,7 @@ class CitationController extends OjsController
     private function setupAdvancedCitation($citationId)
     {
         $em = $this->getDoctrine()->getManager();
-        $citation = $em->getRepository('OjsJournalBundle:Citation')->find($citationId);
+        $citation = $em->getRepository('VipaJournalBundle:Citation')->find($citationId);
         $prepareAdvancedCitation = AdvancedCitationHelper::prepareAdvancedCitation($citation, null);
         $em->persist($prepareAdvancedCitation);
         $em->flush();

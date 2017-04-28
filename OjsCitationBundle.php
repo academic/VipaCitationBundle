@@ -1,9 +1,9 @@
 <?php
 
-namespace Ojs\CitationBundle;
+namespace Vipa\CitationBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class OjsCitationBundle extends Bundle
+class VipaCitationBundle extends Bundle
 {
 }

@@ -1,7 +1,7 @@
 {
-  "name": "ojs/citation-bundle",
+  "name": "vipa/citation-bundle",
   "description": "OJS Advanced Citation Bundle",
-  "type": "ojs-bundle",
+  "type": "vipa-bundle",
   "keywords": [
     "citation bundle"
   ],
@@ -17,7 +17,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Ojs\\CitationBundle\\": ""
+      "Vipa\\CitationBundle\\": ""
     }
   },
   "extra": {

@@ -1,6 +1,6 @@
 {
   "name": "AdvancedCitation",
-  "description": "OJS Advanced Citation Bundle",
+  "description": "Vipa Advanced Citation Bundle",
   "repositories": [
     {
       "type": "vcs",
@@ -8,9 +8,9 @@
     }
   ],
   "require": {
-    "ojs/citation-bundle": "~0.2"
+    "vipa/citation-bundle": "~0.2"
   },
   "extra": {
-    "bundle-class": "Ojs\\CitationBundle\\OjsCitationBundle"
+    "bundle-class": "Vipa\\CitationBundle\\VipaCitationBundle"
   }
 }

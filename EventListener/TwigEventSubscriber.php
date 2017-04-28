@@ -1,10 +1,10 @@
 <?php
 
-namespace Ojs\CitationBundle\EventListener;
+namespace Vipa\CitationBundle\EventListener;
 
 use Doctrine\ORM\EntityManager;
-use Ojs\CoreBundle\Events\TwigEvent;
-use Ojs\CoreBundle\Events\TwigEvents;
+use Vipa\CoreBundle\Events\TwigEvent;
+use Vipa\CoreBundle\Events\TwigEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Twig_Environment;
 use Symfony\Component\Yaml\Parser;
@@ -69,11 +69,11 @@ class TwigEventSubscriber implements EventSubscriberInterface
             )
         );
         $advancedCitation = $this->em
-            ->getRepository('OjsCitationBundle:AdvancedCitation')
+            ->getRepository('VipaCitationBundle:AdvancedCitation')
             ->findOneBy(['citation' => $event->getOptions()['citation']]);
 
         $template = $this->twig->render(
-            'OjsCitationBundle:Citation:table.html.twig',
+            'VipaCitationBundle:Citation:table.html.twig',
             [
                 'advancedCitation' => $advancedCitation,
                 'citationParams' => $citationParams
@@ -86,7 +86,7 @@ class TwigEventSubscriber implements EventSubscriberInterface
     public function onCitationFormExtrasRequested(TwigEvent $event)
     {
         $template = $this->twig->render(
-            'OjsCitationBundle:Citation:raw.html.twig'
+            'VipaCitationBundle:Citation:raw.html.twig'
         );
 
         $event->setTemplate($template);
@@ -102,7 +102,7 @@ class TwigEventSubscriber implements EventSubscriberInterface
             )
         );
         $template = $this->twig->render(
-            'OjsCitationBundle:Citation:script.html.twig',
+            'VipaCitationBundle:Citation:script.html.twig',
             [
                 'bibliographyParams' => json_encode($bibliographyParams)
             ]
@@ -113,7 +113,7 @@ class TwigEventSubscriber implements EventSubscriberInterface
     public function onJournalArticleEventForm(TwigEvent $event)
     {
         $template = $this->twig->render(
-            'OjsCitationBundle:ArticleSubmission:form.html.twig',
+            'VipaCitationBundle:ArticleSubmission:form.html.twig',
             [
                 'form' => $event->getOptions()['form'],
                 'dispatch' => $event->getOptions()['dispatch']

@@ -1,11 +1,11 @@
 <?php
 
-namespace Ojs\CitationBundle\Helper;
+namespace Vipa\CitationBundle\Helper;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Ojs\JournalBundle\Entity\Article;
-use Ojs\JournalBundle\Entity\Citation;
-use Ojs\CitationBundle\Entity\AdvancedCitation;
+use Vipa\JournalBundle\Entity\Article;
+use Vipa\JournalBundle\Entity\Citation;
+use Vipa\CitationBundle\Entity\AdvancedCitation;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use GuzzleHttp\Client;
 

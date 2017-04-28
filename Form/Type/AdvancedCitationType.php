@@ -1,6 +1,6 @@
 <?php
 
-namespace Ojs\CitationBundle\Form\Type;
+namespace Vipa\CitationBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -259,7 +259,7 @@ class AdvancedCitationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $defaults = [
-            'data_class' => 'Ojs\CitationBundle\Entity\AdvancedCitation',
+            'data_class' => 'Vipa\CitationBundle\Entity\AdvancedCitation',
             'attr' => [
                 'novalidate' => 'novalidate',
                 'class' => 'form-validate',
@@ -276,6 +276,6 @@ class AdvancedCitationType extends AbstractType
      */
     public function getName()
     {
-        return 'ojs_citation_type';
+        return 'vipa_citation_type';
     }
 }

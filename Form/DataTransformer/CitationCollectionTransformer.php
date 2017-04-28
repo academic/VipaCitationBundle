@@ -1,12 +1,12 @@
 <?php
 
-namespace Ojs\CitationBundle\Form\DataTransformer;
+namespace Vipa\CitationBundle\Form\DataTransformer;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectManager;
-use Ojs\JournalBundle\Entity\Citation;
-use Ojs\CitationBundle\Entity\AdvancedCitation;
-use Ojs\CitationBundle\Helper\AdvancedCitationHelper;
+use Vipa\JournalBundle\Entity\Citation;
+use Vipa\CitationBundle\Entity\AdvancedCitation;
+use Vipa\CitationBundle\Helper\AdvancedCitationHelper;
 use Symfony\Component\Form\DataTransformerInterface;
 
 class CitationCollectionTransformer implements DataTransformerInterface
@@ -33,7 +33,7 @@ class CitationCollectionTransformer implements DataTransformerInterface
         /** @var Citation $citation */
         foreach ($citations as $citation) {
             $advanced = $this->manager
-                ->getRepository('OjsCitationBundle:AdvancedCitation')
+                ->getRepository('VipaCitationBundle:AdvancedCitation')
                 ->findOneBy(['citation' => $citation]);
             if (!$advanced) {
                 $advanced = AdvancedCitationHelper::prepareAdvancedCitation($citation);

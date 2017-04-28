@@ -1,28 +1,28 @@
-ojs_citation_new:
+vipa_citation_new:
     path:     /{journalId}/article/{articleId}/advanced-citation/new
-    defaults: { _controller: "OjsCitationBundle:Citation:new" }
+    defaults: { _controller: "VipaCitationBundle:Citation:new" }
 
-ojs_citation_create:
+vipa_citation_create:
     path:     /{journalId}/article/{articleId}/advanced-citation/create
-    defaults: { _controller: "OjsCitationBundle:Citation:create" }
+    defaults: { _controller: "VipaCitationBundle:Citation:create" }
     methods:  [POST]
 
-ojs_citation_edit:
+vipa_citation_edit:
     path:     /{journalId}/article/{articleId}/advanced-citation/{id}/edit
-    defaults: { _controller: "OjsCitationBundle:Citation:edit" }
+    defaults: { _controller: "VipaCitationBundle:Citation:edit" }
 
-ojs_citation_update:
+vipa_citation_update:
     path:     /{journalId}/article/{articleId}/advanced-citation/{id}/update
-    defaults: { _controller: "OjsCitationBundle:Citation:update" }
+    defaults: { _controller: "VipaCitationBundle:Citation:update" }
     methods:  [PUT]
 
-ojs_citation_rest_parse:
+vipa_citation_rest_parse:
     path:     /citations-to-form/
-    defaults: { _controller: "OjsCitationBundle:Citation:citationsToForm" }
+    defaults: { _controller: "VipaCitationBundle:Citation:citationsToForm" }
     methods:  [POST]
 
 
-ojs_citation_freecite_parse:
+vipa_citation_freecite_parse:
     path:     /citations-freecite-parse/
-    defaults: { _controller: "OjsCitationBundle:ExtraCitation:parse" }
+    defaults: { _controller: "VipaCitationBundle:ExtraCitation:parse" }
     methods:  [POST]

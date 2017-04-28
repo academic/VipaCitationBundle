@@ -1,9 +1,9 @@
 <?php
 
-namespace Ojs\CitationBundle\Entity;
+namespace Vipa\CitationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Ojs\JournalBundle\Entity\Citation;
+use Vipa\JournalBundle\Entity\Citation;
 
 /**
  * @ORM\Entity
@@ -21,7 +21,7 @@ class AdvancedCitation
 
     /**
      * @var Citation
-     * @ORM\OneToOne(targetEntity="Ojs\JournalBundle\Entity\Citation")
+     * @ORM\OneToOne(targetEntity="Vipa\JournalBundle\Entity\Citation")
      * @ORM\JoinColumn(name="citation_id", referencedColumnName="id")
      */
     private $citation;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ojs\CitationBundle\Tests\Controller;
+namespace Vipa\CitationBundle\Tests\Controller;
 
 class ExtraCitationControllerTest extends \PHPUnit_Framework_TestCase
 {

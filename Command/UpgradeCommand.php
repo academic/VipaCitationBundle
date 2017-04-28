@@ -1,8 +1,8 @@
 <?php
 
-namespace Ojs\CitationBundle\Command;
+namespace Vipa\CitationBundle\Command;
 
-use Ojs\CitationBundle\Helper\AdvancedCitationHelper;
+use Vipa\CitationBundle\Helper\AdvancedCitationHelper;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -15,7 +15,7 @@ class UpgradeCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('ojs:advanced-citation:upgrade')
+            ->setName('vipa:advanced-citation:upgrade')
             ->setDescription('Upgrades already existing citations to advanced ones')
             ->addOption('all', '--all')
         ;
@@ -42,13 +42,13 @@ class UpgradeCommand extends ContainerAwareCommand
     {
         $all = $input->getOption('all');
         $em = $this->getContainer()->get('doctrine.orm.entity_manager');
-        $citations = $em->getRepository('OjsJournalBundle:Citation')->findAll();
+        $citations = $em->getRepository('VipaJournalBundle:Citation')->findAll();
 
         $index = 0;
 
         foreach ($citations as $citation) {
             $advancedCitation = $em
-                ->getRepository('OjsCitationBundle:AdvancedCitation')
+                ->getRepository('VipaCitationBundle:AdvancedCitation')
                 ->findOneBy(['citation' => $citation]);
 
             if (!$advancedCitation || $all) {

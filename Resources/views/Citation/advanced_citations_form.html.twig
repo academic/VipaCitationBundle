@@ -1,5 +1,5 @@
 {% for index,citationForm in form.citations %}
     {% if index > dummyItemCount-1 %}
-        {{ include('OjsCitationBundle:Citation:_citation_subform.html.twig', { 'form': citationForm }) }}
+        {{ include('VipaCitationBundle:Citation:_citation_subform.html.twig', { 'form': citationForm }) }}
     {% endif %}
 {% endfor %}

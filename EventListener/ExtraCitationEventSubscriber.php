@@ -1,14 +1,14 @@
 <?php
 
-namespace Ojs\CitationBundle\EventListener;
+namespace Vipa\CitationBundle\EventListener;
 
 use Doctrine\ORM\EntityManager;
-use Ojs\CoreBundle\Events\TypeEvent;
-use Ojs\JournalBundle\Event\Article\ArticleEvents;
-use Ojs\JournalBundle\Event\CitationEditEvent;
-use Ojs\JournalBundle\Event\CitationEvents;
-use Ojs\CitationBundle\Form\Type\ExtraCitationSubmissionType;
-use Ojs\JournalBundle\Event\CitationNewEvent;
+use Vipa\CoreBundle\Events\TypeEvent;
+use Vipa\JournalBundle\Event\Article\ArticleEvents;
+use Vipa\JournalBundle\Event\CitationEditEvent;
+use Vipa\JournalBundle\Event\CitationEvents;
+use Vipa\CitationBundle\Form\Type\ExtraCitationSubmissionType;
+use Vipa\JournalBundle\Event\CitationNewEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Router;
@@ -52,7 +52,7 @@ class ExtraCitationEventSubscriber implements EventSubscriberInterface
             'journalId' => $editEvent->getJournalId()
         ];
 
-        $url = $this->router->generate('ojs_citation_new', $parameters);
+        $url = $this->router->generate('vipa_citation_new', $parameters);
         $editEvent->setResponse(new RedirectResponse($url, 302));
     }
 
@@ -64,7 +64,7 @@ class ExtraCitationEventSubscriber implements EventSubscriberInterface
             'journalId' => $editEvent->getJournalId()
         ];
 
-        $url = $this->router->generate('ojs_citation_edit', $parameters);
+        $url = $this->router->generate('vipa_citation_edit', $parameters);
         $editEvent->setResponse(new RedirectResponse($url, 302));
     }
 

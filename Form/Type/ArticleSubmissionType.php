@@ -1,14 +1,14 @@
 <?php
 
-namespace Ojs\CitationBundle\Form\Type;
+namespace Vipa\CitationBundle\Form\Type;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Ojs\CoreBundle\Form\Type\JournalBasedTranslationsType;
-use Ojs\JournalBundle\Entity\Journal;
-use Ojs\JournalBundle\Entity\SubjectRepository;
-use Ojs\JournalBundle\Form\Type\ArticleAuthorType;
-use Ojs\JournalBundle\Form\Type\ArticleFileType;
-use Ojs\CitationBundle\Form\DataTransformer\CitationCollectionTransformer;
+use Vipa\CoreBundle\Form\Type\JournalBasedTranslationsType;
+use Vipa\JournalBundle\Entity\Journal;
+use Vipa\JournalBundle\Entity\SubjectRepository;
+use Vipa\JournalBundle\Form\Type\ArticleAuthorType;
+use Vipa\JournalBundle\Form\Type\ArticleFileType;
+use Vipa\CitationBundle\Form\DataTransformer\CitationCollectionTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -31,7 +31,7 @@ class ArticleSubmissionType extends AbstractType
         $builder
             ->add('articleType', 'entity', array(
                     'label' => 'article.type',
-                    'class' => 'Ojs\JournalBundle\Entity\ArticleTypes',
+                    'class' => 'Vipa\JournalBundle\Entity\ArticleTypes',
                     'required' => false,
                     'choices' => $options['journal']->getArticleTypes(),
                 )
@@ -58,7 +58,7 @@ class ArticleSubmissionType extends AbstractType
                 'subjects',
                 'entity',
                 array(
-                    'class' => 'OjsJournalBundle:Subject',
+                    'class' => 'VipaJournalBundle:Subject',
                     'multiple' => true,
                     'required' => true,
                     'property' => 'indentedSubject',
@@ -171,7 +171,7 @@ class ArticleSubmissionType extends AbstractType
                 'journal' => new Journal(),
                 'validation_groups' => false,
                 'cascade_validation' => true,
-                'data_class' => 'Ojs\JournalBundle\Entity\Article',
+                'data_class' => 'Vipa\JournalBundle\Entity\Article',
                 'citationTypes' => [],
                 'attr' => [
                     'novalidate' => 'novalidate',
@@ -186,6 +186,6 @@ class ArticleSubmissionType extends AbstractType
      */
     public function getName()
     {
-        return 'ojs_article_submission';
+        return 'vipa_article_submission';
     }
 }
