@@ -20,6 +20,7 @@ sudo: true
 
 before_install:
   - npm install -g bower
+  - pecl install memcache
 
 before_script:
   - git clone --depth=50 --branch=master https://github.com/academic/vipa.git
